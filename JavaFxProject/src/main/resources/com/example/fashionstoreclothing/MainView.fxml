@@ -1,120 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #f4f9f9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fashionstoreclothing.MainController">
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.fashionstoreclothing.MainController"
+            styleClass="root"
+            prefHeight="700.0" prefWidth="1000.0">
     <top>
-        <VBox fx:id="headerBox" style="-fx-background-color: linear-gradient(to right, #2a6e78, #1a5058); -fx-padding: 15px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);" BorderPane.alignment="CENTER">
-            <children>
-                <HBox alignment="CENTER_LEFT" spacing="20.0">
-                    <children>
-                        <Label style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-family: 'Brush Script MT', cursive;" text="Fashion Boutique">
-                            <font>
-                                <Font name="System Bold" size="28.0" />
-                            </font>
-                        </Label>
-                        <HBox alignment="CENTER_RIGHT" spacing="15.0" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label fx:id="dateTimeLabel" style="-fx-text-fill: #e1f2f4; -fx-font-size: 13px; -fx-font-style: italic;" text="Date: 2025-03-24 14:24:54" />
-                                <Label fx:id="userLabel" style="-fx-text-fill: #e1f2f4; -fx-font-size: 13px; -fx-font-style: italic;" text="User: momaws232" />
-                                <Button fx:id="profileButton" mnemonicParsing="false" onAction="#handleProfileAction" style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-background-radius: 50px; -fx-padding: 5px 15px; -fx-cursor: hand; -fx-font-size: 12px; -fx-border-color: rgba(255,255,255,0.4); -fx-border-radius: 50px;" text="Profile" />
-                                <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutAction" style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-background-radius: 50px; -fx-padding: 5px 15px; -fx-cursor: hand; -fx-font-size: 12px; -fx-border-color: rgba(255,255,255,0.4); -fx-border-radius: 50px;" text="Logout" />
-                            </children>
-                        </HBox>
-                    </children>
-                    <padding>
-                        <Insets left="10.0" right="10.0" />
-                    </padding>
-                </HBox>
-                <Separator opacity="0.2" prefWidth="200.0" style="-fx-background-color: #e1f2f4;" />
-            </children>
+        <VBox spacing="5">
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="Save Inventory" onAction="#handleSaveInventory"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Logout" onAction="#handleLogout"/>
+                    <MenuItem text="Exit" onAction="#handleExit"/>
+                </Menu>
+                <Menu text="Items">
+                    <MenuItem text="Add New Item" onAction="#handleAddItem"/>
+                    <MenuItem text="Edit Selected Item" onAction="#handleEditItem"/>
+                    <MenuItem text="Delete Selected Item" onAction="#handleDeleteItem"/>
+                </Menu>
+                <Menu text="View">
+                    <MenuItem text="Show All Items" onAction="#handleShowAllItems"/>
+                    <MenuItem text="Show Low Stock Items" onAction="#handleShowLowStock"/>
+                </Menu>
+                <Menu text="Admin" fx:id="adminMenu">
+                <MenuItem text="Admin Dashboard" onAction="#handleOpenAdminPanel"/>
+                </Menu>
+            </MenuBar>
+
+            <HBox alignment="CENTER_LEFT" spacing="20" styleClass="panel">
+                <padding>
+                    <Insets top="15" right="20" bottom="15" left="20"/>
+                </padding>
+                <Label text="Elegant Attire" styleClass="title-label"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="dateTimeLabel" styleClass="status-label"/>
+                <Label fx:id="userLoginLabel" styleClass="status-label"/>
+            </HBox>
         </VBox>
     </top>
+
     <center>
-        <VBox fx:id="tableContainer" spacing="15.0" BorderPane.alignment="CENTER">
-            <children>
-                <TableView fx:id="itemTable" prefHeight="300.0" style="-fx-background-color: white; -fx-background-radius: 8px; -fx-effect: dropshadow(gaussian, rgba(42,110,120,0.15), 15, 0, 0, 5); -fx-border-color: #d0e8eb; -fx-border-radius: 8px; -fx-border-width: 1px;" VBox.vgrow="ALWAYS">
-                    <columns>
-                        <TableColumn fx:id="idColumn" prefWidth="75.0" style="-fx-background-color: #2a6e78; -fx-text-fill: white;" text="ID" />
-                        <TableColumn fx:id="nameColumn" prefWidth="150.0" style="-fx-background-color: #2a6e78; -fx-text-fill: white;" text="Name" />
-                        <TableColumn fx:id="categoryColumn" prefWidth="100.0" style="-fx-background-color: #2a6e78; -fx-text-fill: white;" text="Category" />
-                        <TableColumn fx:id="sizeColumn" prefWidth="75.0" style="-fx-background-color: #2a6e78; -fx-text-fill: white;" text="Size" />
-                        <TableColumn fx:id="colorColumn" prefWidth="100.0" style="-fx-background-color: #2a6e78; -fx-text-fill: white;" text="Color" />
-                        <TableColumn fx:id="priceColumn" prefWidth="100.0" style="-fx-background-color: #2a6e78; -fx-text-fill: white;" text="Price" />
-                        <TableColumn fx:id="quantityColumn" prefWidth="100.0" style="-fx-background-color: #2a6e78; -fx-text-fill: white;" text="Quantity" />
-                    </columns>
-                    <VBox.margin>
-                        <Insets left="15.0" right="15.0" top="15.0" />
-                    </VBox.margin>
-                    <effect>
-                        <DropShadow color="#00000026" height="15.0" radius="7.0" width="15.0" />
-                    </effect>
-                </TableView>
-            </children>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Search:" styleClass="header-label"/>
+                <TextField fx:id="searchField" promptText="Enter search term" HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <TableView fx:id="itemTableView" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="nameColumn" text="Name" prefWidth="150"/>
+                    <TableColumn fx:id="categoryColumn" text="Category" prefWidth="120"/>
+                    <TableColumn fx:id="sizeColumn" text="Size" prefWidth="80"/>
+                    <TableColumn fx:id="colorColumn" text="Color" prefWidth="100"/>
+                    <TableColumn fx:id="priceColumn" text="Price" prefWidth="100"/>
+                    <TableColumn fx:id="quantityColumn" text="Quantity" prefWidth="100"/>
+                </columns>
+            </TableView>
         </VBox>
     </center>
+
     <bottom>
-        <VBox fx:id="formContainer" spacing="15.0" style="-fx-background-color: #e7f5f7; -fx-background-radius: 15px 15px 0 0; -fx-padding: 20px;" BorderPane.alignment="CENTER">
-            <children>
-                <Label style="-fx-font-family: 'Brush Script MT', cursive; -fx-font-size: 22px; -fx-text-fill: #2a6e78;" text="Item Details" />
-                <GridPane hgap="15.0" vgap="15.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <children>
-                        <Label style="-fx-font-weight: bold; -fx-text-fill: #2a6e78;" text="Name:" />
-                        <TextField fx:id="nameField" style="-fx-background-radius: 5px; -fx-padding: 8px; -fx-border-color: #b8dde2; -fx-border-radius: 5px; -fx-background-color: white; -fx-prompt-text-fill: #91c1c8;" GridPane.columnIndex="1" />
-                        <Label style="-fx-font-weight: bold; -fx-text-fill: #2a6e78;" text="Category:" GridPane.columnIndex="2" />
-                        <ComboBox fx:id="categoryComboBox" prefWidth="150.0" style="-fx-background-radius: 5px; -fx-padding: 5px; -fx-border-color: #b8dde2; -fx-border-radius: 5px; -fx-background-color: white;" GridPane.columnIndex="3" />
-                        <Label style="-fx-font-weight: bold; -fx-text-fill: #2a6e78;" text="Size:" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="sizeComboBox" prefWidth="150.0" style="-fx-background-radius: 5px; -fx-padding: 5px; -fx-border-color: #b8dde2; -fx-border-radius: 5px; -fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label style="-fx-font-weight: bold; -fx-text-fill: #2a6e78;" text="Color:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <TextField fx:id="colorField" style="-fx-background-radius: 5px; -fx-padding: 8px; -fx-border-color: #b8dde2; -fx-border-radius: 5px; -fx-background-color: white; -fx-prompt-text-fill: #91c1c8;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Label style="-fx-font-weight: bold; -fx-text-fill: #2a6e78;" text="Price ($):" GridPane.rowIndex="2" />
-                        <TextField fx:id="priceField" style="-fx-background-radius: 5px; -fx-padding: 8px; -fx-border-color: #b8dde2; -fx-border-radius: 5px; -fx-background-color: white; -fx-prompt-text-fill: #91c1c8;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label style="-fx-font-weight: bold; -fx-text-fill: #2a6e78;" text="Quantity:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <TextField fx:id="quantityField" style="-fx-background-radius: 5px; -fx-padding: 8px; -fx-border-color: #b8dde2; -fx-border-radius: 5px; -fx-background-color: white; -fx-prompt-text-fill: #91c1c8;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                    </children>
-                    <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                    </VBox.margin>
-                </GridPane>
-                <HBox fx:id="buttonContainer" alignment="CENTER" spacing="20.0">
-                    <children>
-                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddAction" style="-fx-background-color: #2a6e78; -fx-text-fill: white; -fx-background-radius: 50px; -fx-padding: 10px 20px; -fx-cursor: hand; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1); -fx-font-size: 13px;" text="Add Item" />
-                        <Button fx:id="updateButton" disable="true" mnemonicParsing="false" onAction="#handleUpdateAction" style="-fx-background-color: #3a8f9c; -fx-text-fill: white; -fx-background-radius: 50px; -fx-padding: 10px 20px; -fx-cursor: hand; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1); -fx-font-size: 13px;" text="Update Item" />
-                        <Button fx:id="deleteButton" disable="true" mnemonicParsing="false" onAction="#handleDeleteAction" style="-fx-background-color: #194954; -fx-text-fill: white; -fx-background-radius: 50px; -fx-padding: 10px 20px; -fx-cursor: hand; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1); -fx-font-size: 13px;" text="Delete Item" />
-                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#handleClearAction" style="-fx-background-color: #c4e1e6; -fx-text-fill: #194954; -fx-background-radius: 50px; -fx-padding: 10px 20px; -fx-cursor: hand; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1); -fx-font-size: 13px; -fx-border-color: #a6d4da; -fx-border-radius: 50px; -fx-border-width: 1px;" text="Clear Fields" />
-                    </children>
-                    <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
-                    </VBox.margin>
+        <VBox>
+            <HBox styleClass="panel" alignment="CENTER_LEFT" spacing="15">
+                <padding>
+                    <Insets top="10" right="20" bottom="10" left="20"/>
+                </padding>
+
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <Button text="Add Item" onAction="#handleAddItem" styleClass="primary-button"/>
+                    <Button text="Edit Item" onAction="#handleEditItem" styleClass="button"/>
+                    <Button text="Delete Item" onAction="#handleDeleteItem" styleClass="button"/>
                 </HBox>
-                <Label fx:id="statusLabel" alignment="CENTER" style="-fx-text-fill: #194954; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 5px; -fx-alignment: center; -fx-font-style: italic;" text="" />
-            </children>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Label fx:id="totalValueLabel" styleClass="header-label"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="5" right="20" bottom="10" left="20"/>
+                </padding>
+                <Label fx:id="statusLabel" styleClass="status-label"/>
+            </HBox>
         </VBox>
     </bottom>
 </BorderPane>
