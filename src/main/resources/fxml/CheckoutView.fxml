@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.fashionstore.controllers.CheckoutController">
+
+    <top>
+        <VBox>
+            <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="top-bar">
+                <padding>
+                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                </padding>
+                <Label text="CHECKOUT" styleClass="brand-title"/>
+                <HBox HBox.hgrow="ALWAYS" />
+                <Button fx:id="backToCartButton" text="Back to Cart" onAction="#backToCart" styleClass="nav-button"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="transparent-scroll-pane">
+            <VBox spacing="25" styleClass="checkout-content">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20" />
+                </padding>
+
+                <!-- Order Summary -->
+                <Label text="Order Summary" styleClass="section-header"/>
+                <HBox spacing="10">
+                    <Label text="Total Items:"/>
+                    <Label fx:id="totalItemsLabel" text="0 items"/>
+                    <HBox HBox.hgrow="ALWAYS"/>
+                    <Label text="Order Total:"/>
+                    <Label fx:id="orderTotalLabel" text="0.00$" styleClass="order-total"/>
+                </HBox>
+                <Separator/>
+
+                <!-- Payment Information -->
+                <Label text="Payment Information" styleClass="section-header"/>
+                <VBox fx:id="paymentSection" spacing="15" styleClass="payment-section">
+                    <fx:define>
+                        <ToggleGroup fx:id="paymentMethodGroup"/>
+                    </fx:define>
+
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <RadioButton text="Credit Card" toggleGroup="$paymentMethodGroup" selected="true" styleClass="payment-method-radio"/>
+                        <HBox styleClass="payment-logo-container creditcard-logo-container">
+                            <ImageView fitWidth="74" fitHeight="46" preserveRatio="true">
+                                <Image url="https://www.banker.news/UploadCache/libfiles/2/0/600x338o/930.jpg" />
+                            </ImageView>
+                        </HBox>
+                    </HBox>
+
+                    <GridPane hgap="10" vgap="10">
+                        <Label text="Card Number:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">
+                            <TextField fx:id="cardNumberField" promptText="1234 5678 9012 3456"/>
+                            <Label fx:id="cardErrorLabel" styleClass="error-label" visible="false"/>
+                        </VBox>
+
+                        <Label text="Cardholder Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="cardholderField" promptText="John Doe"
+                                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Expiry Date/CVV:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="2" GridPane.columnIndex="1">
+                            <HBox spacing="10">
+                                <ComboBox fx:id="expiryMonthCombo" promptText="Month" prefWidth="100"/>
+                                <ComboBox fx:id="expiryYearCombo" promptText="Year" prefWidth="100"/>
+                                <TextField fx:id="cvvField" promptText="CVV" prefWidth="80"/>
+                            </HBox>
+                            <HBox spacing="10">
+                                <Label fx:id="expiryErrorLabel" styleClass="error-label" visible="false"/>
+                                <Label fx:id="cvvErrorLabel" styleClass="error-label" visible="false"/>
+                            </HBox>
+                        </VBox>
+                    </GridPane>
+
+                    <Separator/>
+
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <RadioButton text="PayPal" toggleGroup="$paymentMethodGroup" styleClass="payment-method-radio"/>
+                        <HBox styleClass="payment-logo-container paypal-logo-container">
+                            <ImageView fitWidth="74" fitHeight="46" preserveRatio="true">
+                                <Image url="https://sensepass.com/wp-content/uploads/2023/06/paypal-payment-icon-editorial-logo-free-vector.jpeg" />
+                            </ImageView>
+                        </HBox>
+                    </HBox>
+
+                    <VBox fx:id="paypalEmailContainer" spacing="10" visible="false" managed="false">
+                        <GridPane hgap="10" vgap="10">
+                            <Label text="PayPal Email:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                            <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">
+                                <TextField fx:id="paypalEmailField" promptText="your-email@example.com"/>
+                                <Label fx:id="paypalEmailErrorLabel" styleClass="error-label" visible="false"/>
+                            </VBox>
+                        </GridPane>
+                    </VBox>
+
+                    <Separator/>
+
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <RadioButton text="In-Store Pickup" toggleGroup="$paymentMethodGroup" styleClass="payment-method-radio"/>
+                        <HBox styleClass="payment-logo-container store-pickup-container">
+                            <ImageView fitWidth="46" fitHeight="46" preserveRatio="true">
+                                <Image url="https://images.ctfassets.net/q602vtcuu3w3/75SHfRFTvwrYnMB4dyp1NB/acde0620dc3d3b09e748f6b98ee07b91/Page_Click_Collect__Topic_C_C_-_InStorePickup__Locale_UK_XS.jpg" />
+                            </ImageView>
+                        </HBox>
+                    </HBox>
+
+                    <VBox fx:id="storePickupContainer" spacing="10" visible="false" managed="false">
+                        <GridPane hgap="10" vgap="10">
+                            <Label text="Pickup Location:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                            <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">
+                                <ComboBox fx:id="storeLocationCombo" promptText="Select a store location"/>
+                                <Label fx:id="storeLocationErrorLabel" styleClass="error-label" visible="false"/>
+                            </VBox>
+                        </GridPane>
+                        <Label text="Items will be ready for pickup within 2 hours during business hours."
+                               styleClass="info-label"/>
+                    </VBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="15.0" styleClass="checkout-footer">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="15.0"/>
+            </padding>
+            <Button fx:id="cancelButton" text="Cancel" onAction="#cancelCheckout" styleClass="action-button"/>
+            <Button fx:id="placeOrderButton" text="Place Order" onAction="#placeOrder" styleClass="action-button"/>
+        </HBox>
+    </bottom>
+</BorderPane>

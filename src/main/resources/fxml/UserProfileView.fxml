@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane styleClass="transparent-pane" stylesheets="@../styles/application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fashionstore.controllers.UserProfileController">
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="header-pane">
+         <padding>
+            <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+         </padding>
+         <children>
+            <Label styleClass="header-title" text="My Profile">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#handleBack" styleClass="nav-button" text="Back to Store" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <TabPane prefHeight="400.0" prefWidth="600.0" styleClass="transparent-pane" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Profile Information">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="transparent-pane">
+                   <children>
+                      <VBox spacing="15.0" styleClass="transparent-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                         <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                         </padding>
+                         <children>
+                            <GridPane hgap="15.0" styleClass="grid-pane" vgap="15.0">
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                               <children>
+                                  <Label text="Username:" />
+                                  <Label text="Email:" GridPane.rowIndex="1" />
+                                  <Label text="First Name:" GridPane.rowIndex="2" />
+                                  <Label text="Last Name:" GridPane.rowIndex="3" />
+                                  <Label text="Account Created:" GridPane.rowIndex="4" />
+                                  
+                                  <Label fx:id="usernameLabel" text="username" GridPane.columnIndex="1" />
+                                  <Label fx:id="emailLabel" text="email@example.com" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                  <TextField fx:id="firstNameField" styleClass="profile-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                  <TextField fx:id="lastNameField" styleClass="profile-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                  <Label fx:id="createdDateLabel" text="01/01/2023" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                               </children>
+                            </GridPane>
+                            
+                            <Separator />
+                            
+                            <GridPane hgap="15.0" styleClass="grid-pane" vgap="15.0">
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                               <children>
+                                  <Label text="Current Password:" />
+                                  <Label text="New Password:" GridPane.rowIndex="1" />
+                                  <PasswordField fx:id="currentPasswordField" styleClass="profile-field" GridPane.columnIndex="1" />
+                                  <PasswordField fx:id="newPasswordField" styleClass="profile-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                               </children>
+                            </GridPane>
+                            
+                            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                               <children>
+                                  <Label fx:id="statusLabel" styleClass="status-label" text="Ready" HBox.hgrow="ALWAYS" />
+                                  <Button mnemonicParsing="false" onAction="#saveProfileChanges" styleClass="action-button" text="Save Changes" />
+                               </children>
+                            </HBox>
+                         </children>
+                      </VBox>
+                   </children>
+                </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Preferences">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="transparent-pane">
+                   <children>
+                      <VBox spacing="20.0" styleClass="transparent-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                         <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                         </padding>
+                         <children>
+                            <!-- Display Settings Section -->
+                            <VBox spacing="15.0" styleClass="card">
+                               <padding>
+                                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                               </padding>
+                               <children>
+                                  <Label text="Display Settings" styleClass="card-header" />
+                                  <Separator />
+                                  <CheckBox fx:id="darkModeCheckbox" mnemonicParsing="false" onAction="#toggleDarkMode" text="Enable Dark Mode" />
+                               </children>
+                            </VBox>
+                            
+                            <!-- Account Settings Section -->
+                            <VBox spacing="15.0" styleClass="card">
+                               <padding>
+                                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                               </padding>
+                               <children>
+                                  <Label text="Account Settings" styleClass="card-header" />
+                                  <Separator />
+                                  <Button fx:id="deactivateAccountButton" mnemonicParsing="false" onAction="#handleDeactivateAccount" styleClass="warning-button" text="Deactivate Account" />
+                                  <Label text="Deactivating your account will temporarily hide your profile. You can reactivate within 7 days, after which your account will be permanently deleted." wrapText="true" styleClass="help-text" />
+                               </children>
+                            </VBox>
+                            
+                            <Region VBox.vgrow="ALWAYS" styleClass="transparent-pane" />
+                            
+                            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                               <children>
+                                  <Label fx:id="preferencesStatusLabel" styleClass="status-label" text="Ready" HBox.hgrow="ALWAYS" />
+                                  <Button mnemonicParsing="false" onAction="#savePreferences" styleClass="action-button" text="Save Preferences" />
+                               </children>
+                            </HBox>
+                         </children>
+                      </VBox>
+                   </children>
+                </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane> 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane styleClass="background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.fashionstore.controllers.RegisterController">
+    <top>
+        <VBox alignment="CENTER" spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="30.0"/>
+            </padding>
+            <Label text="Create New Account" styleClass="header-label">
+                <font>
+                    <Font name="System Bold" size="24.0"/>
+                </font>
+            </Label>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="15.0">
+            <padding>
+                <Insets bottom="20.0" left="50.0" right="50.0" top="20.0"/>
+            </padding>
+            <HBox alignment="CENTER" spacing="10.0">
+                <Label text="Username:" styleClass="form-label" prefWidth="150.0"/>
+                <TextField fx:id="usernameField" promptText="Choose a username" prefWidth="200.0"/>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10.0">
+                <Label text="Email:" styleClass="form-label" prefWidth="150.0"/>
+                <TextField fx:id="emailField" promptText="Enter your email" prefWidth="200.0"/>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10.0">
+                <Label text="First Name:" styleClass="form-label" prefWidth="150.0"/>
+                <TextField fx:id="firstNameField" promptText="Enter your first name" prefWidth="200.0"/>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10.0">
+                <Label text="Last Name:" styleClass="form-label" prefWidth="150.0"/>
+                <TextField fx:id="lastNameField" promptText="Enter your last name" prefWidth="200.0"/>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10.0">
+                <Label text="Password:" styleClass="form-label" prefWidth="150.0"/>
+                <PasswordField fx:id="passwordField" promptText="Create a password" prefWidth="200.0"/>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10.0">
+                <Label text="Confirm Password:" styleClass="form-label" prefWidth="150.0"/>
+                <PasswordField fx:id="confirmPasswordField" promptText="Confirm your password" prefWidth="200.0"/>
+            </HBox>
+            <Label fx:id="errorLabel" styleClass="error-label" visible="false"/>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER" spacing="20.0">
+            <padding>
+                <Insets bottom="30.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+            <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegister" 
+                    text="Register" styleClass="primary-button"/>
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancel" 
+                    text="Cancel" styleClass="secondary-button"/>
+        </HBox>
+    </bottom>
+</BorderPane>

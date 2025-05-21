@@ -1,0 +1,200 @@
+/* Analytics Light Mode Styling */
+
+/* Analytics Tab Pane */
+.analytics-tabs {
+    -fx-background-color: #fafafa;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+.analytics-tabs .tab-header-area {
+    -fx-padding: 10px 5px 0px 5px;
+    -fx-background-color: #f0f0f0;
+}
+
+.analytics-tabs .tab {
+    -fx-background-color: #e8e8e8;
+    -fx-background-radius: 5px 5px 0 0;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1px 1px 0 1px;
+    -fx-border-radius: 5px 5px 0 0;
+    -fx-padding: 12px 15px;
+}
+
+.analytics-tabs .tab:selected {
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #f5f5f5);
+    -fx-border-color: #c0c0c0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.0, 0, 1);
+}
+
+.analytics-tabs .tab-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+}
+
+.analytics-tabs .tab:selected .tab-label {
+    -fx-font-weight: bold;
+}
+
+/* Charts and Tables */
+.chart {
+    -fx-background-color: white;
+    -fx-padding: 10px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #e0e0e0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0.0, 0, 2);
+}
+
+.chart-plot-background {
+    -fx-background-color: rgba(240, 240, 240, 0.3);
+    -fx-background-radius: 4px;
+}
+
+.chart-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 0;
+}
+
+.chart-legend {
+    -fx-background-color: rgba(250, 250, 250, 0.8);
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 10px;
+}
+
+.axis {
+    -fx-font-size: 12px;
+    -fx-tick-label-fill: #555555;
+}
+
+.axis-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Statistics Grid and Values */
+.stats-grid {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #e0e0e0;
+    -fx-padding: 20px;
+    -fx-hgap: 20px;
+    -fx-vgap: 12px;
+}
+
+.stats-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #555555;
+    -fx-font-weight: bold;
+}
+
+.stats-value {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+/* Animated value containers */
+.stats-value-container {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-border-color: transparent;
+    -fx-transition: -fx-background-color 150ms, -fx-border-color 150ms, -fx-translate-y 150ms;
+}
+
+.stats-value-container:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-border-color: #cccccc;
+    -fx-translate-y: -1px;
+}
+
+/* Monetary values with green styling */
+.monetary-value {
+    -fx-background-color: rgba(240, 255, 240, 0.5);
+}
+
+.monetary-value:hover {
+    -fx-background-color: rgba(240, 255, 240, 0.8);
+    -fx-border-color: #c0e0c0;
+}
+
+.monetary-value .stats-value {
+    -fx-text-fill: #2e7d32;
+}
+
+/* Attention values (like low stock) */
+.attention-value {
+    -fx-background-color: rgba(255, 243, 224, 0.7);
+}
+
+.attention-value:hover {
+    -fx-background-color: rgba(255, 243, 224, 0.9);
+    -fx-border-color: #ffcc80;
+}
+
+.attention-value .stats-value {
+    -fx-text-fill: #e65100;
+}
+
+/* Section Titles */
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 15px 0 10px 0;
+}
+
+/* Recommendations Box */
+.recommendations-box {
+    -fx-background-color: #f0f7ff;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #d0e0f0;
+    -fx-padding: 15px;
+    -fx-spacing: 8px;
+}
+
+/* Table View Styling */
+.analytics-table {
+    -fx-background-color: white;
+    -fx-table-cell-border-color: #e0e0e0;
+}
+
+.analytics-table .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #f8f8f8, #e8e8e8);
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.analytics-table .column-header, .analytics-table .filler {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 1 1 0;
+    -fx-border-color: #d0d0d0;
+    -fx-padding: 10px;
+}
+
+.analytics-table .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #444444;
+}
+
+/* Refresh Button Animation */
+.action-button {
+    -fx-transition: -fx-background-color 150ms, -fx-scale-x 150ms, -fx-scale-y 150ms;
+}
+
+.action-button:hover {
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+.action-button:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+} 

@@ -1,0 +1,1275 @@
+/* Dark Theme for Fashion Store Application - Monotone Version */
+
+/* Color palette - updated for enhanced dark theme */
+* {
+    /* Primary monotone colors */
+    -fx-primary: #1a1a1a;
+    -fx-primary-light: #2a2a2a;
+    -fx-primary-dark: #121212;
+    -fx-mid-gray: #5a5a5a;
+    -fx-light-gray: #8a8a8a;
+    -fx-xlight-gray: #c0c0c0;
+    -fx-background: #1e1e1e;
+    
+    /* Enhanced accent colors */
+    -fx-accent: #4e86c7;             /* Blue as primary accent */
+    -fx-accent-light: #7ab5ff;       /* Lighter accent */
+    -fx-accent-dark: #2a64a5;        /* Darker accent */
+    -fx-focus-color: derive(-fx-accent, 20%);
+    -fx-focus-shadow: rgba(74, 134, 199, 0.5);
+    -fx-error: #d32f2f;
+    
+    /* Text colors */
+    -fx-text-primary: #ffffff;       /* Bright white for better visibility */
+    -fx-text-secondary: #e0e0e0;     /* Light gray for secondary text */
+    -fx-text-disabled: #909090;      /* Medium gray for disabled text */
+    
+    /* Animation durations */
+    -fx-fast-duration: 150ms;
+    -fx-medium-duration: 250ms;
+    -fx-slow-duration: 400ms;
+}
+
+/* Base styles with improved animation */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #222222, -fx-background);
+    -fx-text-fill: -fx-text-primary;
+    -fx-transition: -fx-background-color 1000ms ease-out;
+}
+
+.root-container {
+    -fx-background-color: -fx-background;
+    -fx-fit-to-width: true;
+    -fx-fit-to-height: true;
+    -fx-min-width: 1024px;
+    -fx-min-height: 768px;
+    -fx-pref-width: 1024px;
+    -fx-pref-height: 768px;
+    -fx-transition: -fx-background-color -fx-medium-duration ease-out;
+}
+
+.main-container, .wardrobe-container {
+    -fx-background-color: -fx-background;
+    -fx-transition: -fx-background-color -fx-medium-duration ease-out;
+    -fx-fit-to-width: true;
+    -fx-fit-to-height: true;
+}
+
+/* Top Bar with improved shadow */
+.top-bar {
+    -fx-background-color: linear-gradient(to bottom, -fx-primary, derive(-fx-primary, 5%));
+    -fx-padding: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 8, 0, 0, 3);
+    -fx-transition: -fx-effect -fx-medium-duration ease;
+}
+
+.top-bar:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0, 0, 4);
+}
+
+/* Brand title with improved styling */
+.brand-title {
+    -fx-text-fill: -fx-accent-light;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 4px;
+    -fx-transition: -fx-text-fill -fx-medium-duration ease, 
+                   -fx-scale-x -fx-fast-duration ease,
+                   -fx-scale-y -fx-fast-duration ease;
+}
+.brand-title:hover {
+    -fx-text-fill: -fx-xlight-gray;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Navigation & Cart Buttons with improved animations */
+.nav-button, .logout-button, .cart-button {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+}
+.nav-button:hover, .logout-button:hover, .cart-button:hover {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #ffffff;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+.nav-button:pressed, .logout-button:pressed, .cart-button:pressed {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-rotate: -1;
+    -fx-effect: dropshadow(gaussian, rgba(144, 164, 174, 0.2), 4, 0, 0, 1);
+}
+
+/* User label */
+.user-label {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 14px;
+}
+
+/* Menu Bar styling with modern look */
+.menu-bar {
+    -fx-background-color: linear-gradient(to bottom, #1a1a1a, #151515);
+    -fx-border-color: #333333;
+    -fx-border-width: 0 0 1px 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 5, 0, 0, 2);
+}
+
+.menu-bar .menu {
+    -fx-background-color: transparent;
+}
+
+.menu-bar .menu .label {
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+}
+
+.menu-bar .menu-button {
+    -fx-background-color: transparent;
+}
+
+.menu-bar .menu-button .label {
+    -fx-text-fill: white;
+}
+
+.menu-bar .menu-button:hover {
+    -fx-background-color: rgba(74, 134, 199, 0.2);
+}
+
+.menu-bar .menu-button:showing {
+    -fx-background-color: rgba(74, 134, 199, 0.3);
+}
+
+.menu-bar .context-menu {
+    -fx-background-color: #222222;
+    -fx-border-color: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 8, 0, 0, 3);
+}
+
+.menu-item {
+    -fx-background-color: #222222;
+    -fx-padding: 6px 10px;
+}
+
+.menu-item .label {
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+}
+
+.menu-item:focused, .menu-item:hover {
+    -fx-background-color: rgba(74, 134, 199, 0.3);
+}
+
+/* Default text styling for all elements */
+.label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+/* Enhanced TextField styling */
+.text-field, .password-field, .text-area {
+    -fx-background-color: #2a2a2a;
+    -fx-border-color: #3a3a3a;
+    -fx-text-fill: -fx-text-primary;
+    -fx-prompt-text-fill: -fx-text-secondary;
+    -fx-control-inner-background: #2a2a2a;
+    -fx-highlight-fill: rgba(74, 134, 199, 0.4);
+    -fx-highlight-text-fill: white;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 1, 0, 0, 1);
+    -fx-transition: -fx-border-color 150ms ease;
+}
+
+.text-field:focused, .password-field:focused, .text-area:focused {
+    -fx-border-color: -fx-accent;
+    -fx-effect: dropshadow(gaussian, rgba(74, 134, 199, 0.4), 8, 0, 0, 0);
+}
+
+/* Ensure combo-box has dark background in dark mode */
+.combo-box {
+    -fx-background-color: #2a2a2a;
+    -fx-border-color: #3a3a3a;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: #3a3a3a;
+}
+
+.combo-box .arrow {
+    -fx-background-color: #ffffff;
+}
+
+/* Ensure consistent dark styling for all form elements */
+.dark-mode .text-field, 
+.dark-mode .password-field, 
+.dark-mode .text-area,
+.dark-mode .combo-box,
+.dark-mode .list-view,
+.dark-mode .choice-box,
+.dark-mode .spinner,
+.dark-mode .date-picker,
+.dark-mode .color-picker {
+    -fx-background-color: #2a2a2a;
+    -fx-border-color: #3a3a3a;
+    -fx-text-fill: white;
+    -fx-control-inner-background: #2a2a2a;
+    -fx-highlight-fill: #505050;
+    -fx-highlight-text-fill: white;
+}
+
+.dark-mode .text-field:focused, 
+.dark-mode .password-field:focused, 
+.dark-mode .text-area:focused,
+.dark-mode .combo-box:focused {
+    -fx-background-color: #333333;
+    -fx-border-color: #4a4a4a;
+}
+
+/* Fix for filters in dark mode */
+.dark-mode .combo-box-popup .list-view {
+    -fx-background-color: #2a2a2a;
+    -fx-border-color: #3a3a3a;
+}
+
+.dark-mode .combo-box-popup .list-cell {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.dark-mode .combo-box-popup .list-cell:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.dark-mode .combo-box-popup .list-cell:selected {
+    -fx-background-color: #62757f;
+    -fx-text-fill: white;
+}
+
+/* Fix for GridPane in profiles and forms */
+.dark-mode .grid-pane {
+    -fx-background-color: transparent;
+}
+
+.dark-mode .transparent-pane {
+    -fx-background-color: transparent;
+}
+
+/* Button styling with enhanced visuals */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #333333, #2a2a2a);
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+    -fx-padding: 8 16;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 1);
+    -fx-transition: -fx-background-color 200ms ease,
+                    -fx-effect 200ms ease,
+                    -fx-scale-x 150ms ease,
+                    -fx-scale-y 150ms ease;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #444444, #333333);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 5, 0, 0, 2);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #222222, #2a2a2a);
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+.action-button {
+    -fx-background-color: #2a5885;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.action-button:hover {
+    -fx-background-color: #366ca8;
+}
+
+.action-button:pressed {
+    -fx-background-color: #1f4366;
+}
+
+.secondary-button {
+    -fx-background-color: #424242;
+    -fx-text-fill: #e0e0e0;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #525252;
+}
+
+.delete-button {
+    -fx-background-color: #833333;
+    -fx-text-fill: #ffffff;
+}
+
+.delete-button:hover {
+    -fx-background-color: #a33333;
+}
+
+/* Scroll bar styling */
+.scroll-bar {
+    -fx-background-color: #1a1a1a;
+}
+
+.scroll-bar > .thumb {
+    -fx-background-color: #3a3a3a;
+    -fx-background-radius: 5em;
+}
+
+.scroll-bar > .thumb:hover {
+    -fx-background-color: #4a4a4a;
+}
+
+.scroll-bar > .increment-button,
+.scroll-bar > .decrement-button {
+    -fx-background-color: transparent;
+}
+
+/* Table view styling - improved for admin page */
+.table-view {
+    -fx-background-color: #1e1e1e;
+    -fx-table-cell-border-color: #2a2a2a;
+    -fx-padding: 5px;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #252525;
+    -fx-border-color: #2a2a2a;
+    -fx-padding: 5px;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #252525;
+    -fx-border-color: #2a2a2a;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 8px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #2a2a2a;
+    -fx-table-cell-border-color: #2a2a2a;
+    -fx-padding: 5 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #222222;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgba(42, 88, 133, 0.5);
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #272727;
+}
+
+.table-cell {
+    -fx-text-fill: #e0e0e0;
+    -fx-padding: 8px;
+    -fx-alignment: center-left;
+}
+
+/* Login page specific styling */
+.login-pane {
+    -fx-background-color: #242424;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-border-color: #3a3a3a;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 4);
+    -fx-padding: 30px;
+    -fx-spacing: 15px;
+    -fx-alignment: center;
+}
+
+.login-header {
+    -fx-text-fill: -fx-accent-light;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 20 0;
+}
+
+.form-label {
+    -fx-text-fill: #b0b0b0;
+    -fx-font-size: 14px;
+    -fx-padding: 10 0 5 0;
+}
+
+.error-label {
+    -fx-text-fill: -fx-error;
+    -fx-font-size: 13px;
+    -fx-padding: 10 0 5 0;
+}
+
+/* Admin panel specific styling */
+.admin-panel {
+    -fx-background-color: -fx-background;
+}
+
+.header-pane {
+    -fx-background-color: #1a1a1a;
+    -fx-border-color: #333333;
+    -fx-border-width: 0 0 1 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+}
+
+.header-title {
+    -fx-text-fill: #f0f0f0;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.subheader {
+    -fx-text-fill: #b0b0b0;
+    -fx-font-size: 14px;
+}
+
+.back-button {
+    -fx-background-color: rgba(80, 80, 80, 0.3);
+    -fx-text-fill: -fx-text-primary;
+    -fx-background-radius: 4px;
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(80, 80, 80, 0.5);
+}
+
+/* Section headers */
+.section-header {
+    -fx-text-fill: -fx-accent-light;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent transparent rgba(144, 164, 174, 0.3) transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0 0 5 0;
+}
+
+/* Outfit and clothing item styling */
+.clothing-item {
+    -fx-background-color: #2a2a2a;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #3a3a3a;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 1);
+}
+
+.clothing-item:hover {
+    -fx-background-color: #323232;
+    -fx-border-color: rgba(144, 164, 174, 0.3);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 6, 0, 0, 2);
+}
+
+.clothing-item-name {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.clothing-item-info {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+/* Product card */
+.product-card {
+    -fx-background-color: #242424;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-border-color: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 1);
+    -fx-transition: -fx-border-color -fx-medium-duration ease,
+                    -fx-effect -fx-medium-duration ease,
+                    -fx-translate-y -fx-medium-duration ease;
+}
+
+.product-card:hover {
+    -fx-border-color: rgba(144, 164, 174, 0.5);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 3);
+    -fx-translate-y: -2px;
+}
+
+.product-name {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-weight: bold;
+}
+
+.product-price {
+    -fx-text-fill: -fx-accent-light;
+    -fx-font-weight: bold;
+}
+
+.product-category {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+/* Alert dialog styling */
+.alert {
+    -fx-background-color: #1e1e1e;
+}
+
+.alert > *.button-bar > *.container {
+    -fx-background-color: #1e1e1e;
+}
+
+.alert > *.label.content {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.alert:header > *.header-panel {
+    -fx-background-color: #1c1c1c;
+}
+
+.alert:header > *.header-panel > *.label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+/* Search Bar */
+.search-bar {
+    -fx-background-color: #1c1c1c;
+    -fx-padding: 10px;
+}
+
+.search-button {
+    -fx-background-color: rgba(144, 164, 174, 0.5);
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+}
+
+.search-button:hover {
+    -fx-background-color: rgba(144, 164, 174, 0.7);
+}
+
+/* Count label */
+.count-label {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 14px;
+}
+
+/* Footer pane for admin panel */
+.footer-pane {
+    -fx-background-color: #1c1c1c;
+    -fx-border-color: #2a2a2a;
+    -fx-border-width: 1 0 0 0;
+}
+
+.status-label {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+}
+
+/* Tabs styling for analytics and other tabbed views */
+.tab-pane {
+    -fx-background-color: #1e1e1e;
+    -fx-tab-min-height: 36px;
+    -fx-tab-max-height: 36px;
+}
+
+.tab-pane > .tab-header-area {
+    -fx-background-color: #1a1a1a;
+    -fx-padding: 5 5 0 5;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab {
+    -fx-background-color: #252525;
+    -fx-background-radius: 4 4 0 0;
+    -fx-border-color: #3a3a3a;
+    -fx-border-radius: 4 4 0 0;
+    -fx-border-width: 1 1 0 1;
+    -fx-padding: 8 15;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:selected {
+    -fx-background-color: #2a5885;
+    -fx-border-color: #366ca8;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:hover:not(:selected) {
+    -fx-background-color: #303030;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label {
+    -fx-text-fill: #b0b0b0;
+    -fx-font-size: 14px;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:selected > .tab-container > .tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+/* Card styling for consistent panel-like elements */
+.card {
+    -fx-background-color: #252525;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #333333;
+    -fx-padding: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+}
+
+.card-header {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 10 0;
+}
+
+/* Placeholder styling for features not implemented yet */
+.placeholder-container {
+    -fx-background-color: rgba(42, 88, 133, 0.1);
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: rgba(42, 88, 133, 0.3);
+    -fx-border-width: 1;
+    -fx-padding: 15px;
+    -fx-alignment: center;
+}
+
+.placeholder-text {
+    -fx-text-fill: #b0b0b0;
+    -fx-font-size: 14px;
+}
+
+.placeholder-icon {
+    -fx-fill: rgba(42, 88, 133, 0.4);
+    -fx-font-size: 48px;
+}
+
+/* Consistent form elements */
+.form-container {
+    -fx-spacing: 15;
+    -fx-padding: 20;
+}
+
+.form-field-container {
+    -fx-spacing: 5;
+}
+
+/* Status and notification styles */
+.status-bar {
+    -fx-background-color: #1a1a1a;
+    -fx-border-color: #2a2a2a;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 10;
+}
+
+.status-label {
+    -fx-text-fill: #b0b0b0;
+    -fx-font-size: 14px;
+}
+
+.status-success {
+    -fx-text-fill: #66bb6a;
+}
+
+.status-warning {
+    -fx-text-fill: #ffb74d;
+}
+
+.status-error {
+    -fx-text-fill: #e57373;
+}
+
+/* Dialog styles for dark theme */
+.dialog-pane, .custom-alert .dialog-pane {
+    -fx-background-color: #2a2a2a;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 15, 0, 0, 5);
+}
+
+.dialog-pane .header-panel, .custom-alert .dialog-pane .header-panel {
+    -fx-background-color: #1a1a1a;
+    -fx-padding: 16px;
+    -fx-background-radius: 6px 6px 0 0;
+}
+
+.dialog-pane .header-panel .label, .custom-alert .dialog-pane .header-panel .label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-accent-light;
+}
+
+.dialog-pane .content.label, .custom-alert .dialog-pane .content.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-text-primary;
+    -fx-padding: 16px 0;
+    -fx-wrap-text: true;
+}
+
+.dialog-pane .button-bar .container, .custom-alert .dialog-pane .button-bar .container {
+    -fx-background-color: transparent;
+    -fx-padding: 10px 0 0 0;
+}
+
+.dialog-pane .button-bar .button, .custom-alert .dialog-pane .button-bar .button {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-accent, 10%), -fx-accent);
+    -fx-text-fill: -fx-background;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-min-width: 100px;
+}
+
+.dialog-pane .button-bar .button:hover, .custom-alert .dialog-pane .button-bar .button:hover {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-accent, 20%), derive(-fx-accent, 10%));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 2);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.dialog-pane .button-bar .button:pressed, .custom-alert .dialog-pane .button-bar .button:pressed {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-accent, -10%), -fx-accent);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 0, 0, 1);
+}
+
+/* Apply different styles for different alert types in dark theme */
+.custom-alert.confirmation .dialog-pane .header-panel {
+    -fx-background-color: #3b5bdb;
+}
+
+.custom-alert.information .dialog-pane .header-panel {
+    -fx-background-color: #0c8599;
+}
+
+.custom-alert.warning .dialog-pane .header-panel {
+    -fx-background-color: #e67700;
+}
+
+.custom-alert.error .dialog-pane .header-panel {
+    -fx-background-color: #c92a2a;
+}
+
+/* Settings section styling */
+.settings-section {
+    -fx-background-color: #252525;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #333333;
+}
+
+/* Special styling for profile fields */
+.profile-field {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #b0b0b0;
+    -fx-control-inner-background: #2a2a2a;
+    -fx-highlight-fill: #505050;
+    -fx-highlight-text-fill: white;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #3a3a3a;
+    -fx-border-radius: 0;
+}
+
+.profile-field:focused {
+    -fx-background-color: #333333;
+    -fx-border-color: #4a4a4a;
+}
+
+.dark-mode .profile-field {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #a0a0a0;
+    -fx-control-inner-background: #2a2a2a;
+    -fx-highlight-fill: #505050;
+    -fx-highlight-text-fill: white;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #3a3a3a;
+    -fx-border-radius: 0;
+}
+
+.dark-mode .profile-field:focused {
+    -fx-background-color: #333333;
+    -fx-border-color: #4a4a4a;
+}
+
+/* Fix for TabPane and Tab content areas in dark mode */
+.dark-mode .tab-content-area {
+    -fx-background-color: #1e1e1e;
+}
+
+.dark-mode .tab-pane > .tab-header-area {
+    -fx-background-color: #1a1a1a;
+}
+
+.dark-mode .tab-pane > .tab-header-area > .tab-header-background {
+    -fx-background-color: #1a1a1a;
+}
+
+.dark-mode .tab-pane > .tab-header-area > .headers-region > .tab {
+    -fx-background-color: #252525;
+    -fx-text-fill: white;
+}
+
+.dark-mode .tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label {
+    -fx-text-fill: #b0b0b0;
+}
+
+.dark-mode .tab-pane > .tab-header-area > .headers-region > .tab:selected {
+    -fx-background-color: #3a3a3a;
+}
+
+.dark-mode .tab-pane > .tab-header-area > .headers-region > .tab:selected > .tab-container > .tab-label {
+    -fx-text-fill: white;
+}
+
+/* Fix for labels in dark mode */
+.dark-mode .label {
+    -fx-text-fill: white;
+}
+
+/* Fix for grid-pane and transparent containers in dark mode */
+.dark-mode .grid-pane, 
+.dark-mode .transparent-pane,
+.dark-mode .anchor-pane,
+.dark-mode .tab-content-area {
+    -fx-background-color: transparent;
+}
+
+/* Fix for profile view background in dark mode */
+.dark-mode .tab-pane {
+    -fx-background-color: #1e1e1e;
+}
+
+/* Fix for BorderPane in dark mode */
+.dark-mode .border-pane {
+    -fx-background-color: #1e1e1e;
+}
+
+/* Fix for checkbox in dark mode */
+.dark-mode .check-box {
+    -fx-text-fill: white;
+}
+
+.dark-mode .check-box .box {
+    -fx-background-color: #2a2a2a;
+    -fx-border-color: #3a3a3a;
+}
+
+.dark-mode .check-box:selected .mark {
+    -fx-background-color: white;
+}
+
+.dark-mode .check-box:selected .box {
+    -fx-background-color: #505050;
+}
+
+/* Ensure consistent styling for all container types */
+.dark-mode .anchor-pane,
+.dark-mode .vbox,
+.dark-mode .hbox,
+.dark-mode .border-pane,
+.dark-mode .stack-pane {
+    -fx-background-color: transparent;
+}
+
+/* Special styling for card containers in dark mode */
+.dark-mode .card {
+    -fx-background-color: #252525;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+}
+
+/* Fix for filter combo boxes in dark mode - maintained shape with dark colors */
+.dark-mode .combo-box {
+    -fx-background-color: #2a2a2a;
+    -fx-border-color: #3a3a3a;
+    -fx-text-fill: white;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-padding: 4px 8px;
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+}
+
+.dark-mode .combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 4px 4px 0;
+    -fx-padding: 0 8px;
+}
+
+.dark-mode .combo-box .arrow {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-padding: 3px;
+}
+
+.dark-mode .combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: center-left;
+}
+
+/* Enhance text color in the profile views */
+.dark-mode .label {
+    -fx-text-fill: white !important;
+}
+
+/* Explicitly style tab pane header area in dark mode */
+.dark-mode .tab-pane .tab-header-area {
+    -fx-background-color: #1a1a1a;
+    -fx-padding: 3px 5px 0px 5px;
+}
+
+.dark-mode .tab-pane .tab-header-area .headers-region {
+    -fx-background-color: #1a1a1a;
+}
+
+.dark-mode .tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #1a1a1a;
+    -fx-border-color: #1a1a1a;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+}
+
+/* Fix profile text field colors */
+.dark-mode .profile-field {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #a0a0a0;
+    -fx-control-inner-background: #2a2a2a;
+    -fx-highlight-fill: #505050;
+    -fx-highlight-text-fill: white;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #3a3a3a;
+    -fx-border-radius: 0;
+}
+
+/* Fix for tab content areas */
+.dark-mode .tab-pane > .tab-content-area {
+    -fx-background-color: #1e1e1e;
+}
+
+.dark-mode .tab-pane > .tab-content-area > * {
+    -fx-background-color: #1e1e1e;
+}
+
+/* Ensure all username, email, etc. labels in GridPane of profile view have white text */
+.dark-mode .grid-pane .label {
+    -fx-text-fill: white !important;
+}
+
+/* Override any inline styling that might be applied */
+.dark-mode * {
+    -fx-text-inner-color: white;
+}
+
+/* Enhanced styles for combo boxes and filters with glow animation */
+.dark-mode .combo-box {
+    -fx-background-color: #2a2a2a;
+    -fx-border-color: #3a3a3a;
+    -fx-text-fill: white;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-padding: 4px 8px;
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+    -fx-transition: -fx-effect 300ms ease, -fx-border-color 300ms ease;
+}
+
+.dark-mode .combo-box:hover {
+    -fx-border-color: -fx-accent;
+    -fx-effect: dropshadow(three-pass-box, rgba(144, 164, 174, 0.5), 8, 0.0, 0, 0);
+    -fx-cursor: hand;
+}
+
+.dark-mode .combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 4px 4px 0;
+    -fx-padding: 0 8px;
+}
+
+.dark-mode .combo-box .arrow {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-padding: 3px;
+}
+
+.dark-mode .combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: center-left;
+}
+
+.dark-mode .combo-box-popup .list-view {
+    -fx-background-color: #2a2a2a;
+    -fx-border-color: #3a3a3a;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 12, 0.0, 0, 5);
+}
+
+.dark-mode .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgba(144, 164, 174, 0.3);
+    -fx-effect: dropshadow(three-pass-box, rgba(144, 164, 174, 0.3), 5, 0.0, 0, 0);
+}
+
+.dark-mode .combo-box-popup .list-cell:selected {
+    -fx-background-color: -fx-accent-dark;
+    -fx-text-fill: white;
+}
+
+/* Fix for text color in dark mode - ensure all text is white */
+.dark-mode .label, 
+.dark-mode .text, 
+.dark-mode .user-label, 
+.dark-mode .brand-title,
+.dark-mode .tab-pane .tab-label {
+    -fx-text-fill: -fx-text-primary !important;
+}
+
+/* Fix for tab header area background in dark mode */
+.dark-mode .tab-pane .tab-header-area,
+.dark-mode .tab-pane .tab-header-background,
+.dark-mode .tab-pane .headers-region {
+    -fx-background-color: #1a1a1a !important;
+    -fx-border-color: transparent !important;
+}
+
+.dark-mode .tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #1a1a1a !important;
+    -fx-border-color: transparent !important;
+    -fx-effect: none;
+}
+
+/* Enhanced styling for search fields with glow effect */
+.dark-mode .text-field {
+    -fx-background-color: #2a2a2a;
+    -fx-border-color: #3a3a3a;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #a0a0a0;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px 10px;
+    -fx-transition: -fx-effect 300ms ease, -fx-border-color 300ms ease;
+}
+
+.dark-mode .text-field:hover {
+    -fx-border-color: -fx-accent;
+    -fx-effect: dropshadow(three-pass-box, rgba(144, 164, 174, 0.5), 8, 0.0, 0, 0);
+}
+
+.dark-mode .text-field:focused {
+    -fx-border-color: -fx-accent-light;
+    -fx-effect: dropshadow(three-pass-box, rgba(144, 164, 174, 0.7), 10, 0.0, 0, 0);
+}
+
+/* Ensure .user-label is explicitly white */
+.dark-mode .user-label {
+    -fx-text-fill: -fx-text-primary !important;
+    -fx-fill: -fx-text-primary !important;
+}
+
+/* Tab styling enhancement with glow effect */
+.dark-mode .tab-pane .tab {
+    -fx-background-color: #252525;
+    -fx-background-radius: 4px 4px 0 0;
+    -fx-border-color: #3a3a3a;
+    -fx-border-radius: 4px 4px 0 0;
+    -fx-transition: -fx-background-color 300ms ease, -fx-effect 300ms ease;
+}
+
+.dark-mode .tab-pane .tab:hover {
+    -fx-background-color: #303030;
+    -fx-effect: dropshadow(three-pass-box, rgba(144, 164, 174, 0.3), 6, 0.0, 0, 0);
+}
+
+.dark-mode .tab-pane .tab:selected {
+    -fx-background-color: #3a3a3a;
+    -fx-border-color: -fx-accent;
+    -fx-effect: dropshadow(three-pass-box, rgba(144, 164, 174, 0.4), 8, 0.0, 0, 0);
+}
+
+/* Ensure all username, email, etc. labels in dark mode have white text */
+.dark-mode * {
+    -fx-text-inner-color: white;
+}
+
+/* Critical fixes for dark mode text and backgrounds */
+
+/* Force all text to be white in dark mode - extreme solution */
+.dark-mode .label,
+.dark-mode .text,
+.dark-mode Text,
+.dark-mode .user-label,
+.dark-mode #userLabel,
+.dark-mode .tab-label,
+.dark-mode .combo-box,
+.dark-mode .list-cell,
+.dark-mode .button,
+.dark-mode .text-field,
+.dark-mode .menu-item > .label {
+    -fx-text-fill: white !important;
+    -fx-fill: white !important;
+}
+
+/* Force tab header background to be dark */
+.dark-mode .tab-pane > .tab-header-area,
+.dark-mode .tab-header-area,
+.dark-mode .tab-header-background,
+.dark-mode .headers-region,
+.dark-mode .tab-pane .tab-header-area,
+.dark-mode .tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #121212 !important;
+    -fx-background: #121212 !important;
+    -fx-border-color: transparent !important;
+}
+
+/* Strong animation for filter dropdowns */
+.dark-mode .combo-box:hover {
+    -fx-border-color: #90CAF9 !important;
+    -fx-effect: dropshadow(gaussian, #90CAF9, 15, 0.7, 0, 0) !important;
+    -fx-cursor: hand;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+/* Make filter dropdown text clearly white */
+.dark-mode .combo-box .list-cell,
+.dark-mode .combo-box .label,
+.dark-mode .combo-box-popup .list-cell {
+    -fx-text-fill: white !important;
+}
+
+/* Override any inline styling */
+.dark-mode .user-label {
+    -fx-text-fill: white !important;
+}
+
+/* Dark mode root element class - important for theme switching */
+.dark-mode {
+    -fx-text-fill: white;
+}
+
+/* Fix for MenuBarButtonStyle error */
+/* Fix for MenuBarButton style binding error */
+.menu-bar .menu-button, .MenuBarButtonStyle {
+    -fx-background-color: transparent !important;
+    -fx-text-fill: white !important;
+}
+
+/* Additional fixes for menu binding errors */
+.dark-mode .menu-bar * {
+    -fx-text-fill: white;
+}
+
+/* Ensure proper styling of menu buttons */
+.dark-mode .menu-bar .menu-button .label {
+    -fx-text-fill: white !important;
+}
+
+/* Dark mode specific styling */
+.dark-mode {
+    -fx-text-fill: white;
+}
+
+.dark-mode .tab-pane {
+    -fx-background-color: #1e1e1e;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+}
+
+.dark-mode .tab-header-area {
+    -fx-background-color: #1a1a1a;
+}
+
+.dark-mode .tab {
+    -fx-background-color: #252525;
+    -fx-background-radius: 4px 4px 0 0;
+    -fx-border-color: #3a3a3a;
+    -fx-border-radius: 4px 4px 0 0;
+    -fx-border-width: 1px 1px 0 1px;
+    -fx-transition: -fx-background-color 150ms ease;
+}
+
+.dark-mode .tab:selected {
+    -fx-background-color: #2a64a5;
+    -fx-border-color: #4e86c7;
+}
+
+.dark-mode .tab .tab-label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 13px;
+}
+
+.dark-mode .tab:selected .tab-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Card styling for stores and products */
+.dark-mode .product-card {
+    -fx-background-color: #242424;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 1);
+    -fx-transition: -fx-border-color 150ms ease,
+                    -fx-effect 150ms ease,
+                    -fx-translate-y 150ms ease;
+}
+
+.dark-mode .product-card:hover {
+    -fx-border-color: rgba(74, 134, 199, 0.5);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 3);
+    -fx-translate-y: -2px;
+}
+
+/* Enhanced action buttons */
+.dark-mode .add-to-cart-button {
+    -fx-background-color: linear-gradient(to bottom, #4e86c7, #2a64a5);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0, 0, 1);
+    -fx-transition: -fx-background-color 150ms ease,
+                   -fx-scale-x 100ms ease,
+                   -fx-scale-y 100ms ease;
+}
+
+.dark-mode .add-to-cart-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #5a92d3, #3570b1);
+    -fx-effect: dropshadow(gaussian, rgba(74, 134, 199, 0.5), 6, 0, 0, 2);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.unban-button:disabled {
+    -fx-opacity: 0.5;
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: #707070;
+    -fx-cursor: not-allowed;
+} 

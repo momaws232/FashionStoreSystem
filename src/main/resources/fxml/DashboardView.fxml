@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane styleClass="background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.fashionstore.controllers.DashboardController">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="top-bar">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
+            </padding>
+            <Label text="Fashion Store" styleClass="app-title">
+                <font>
+                    <Font name="System Bold" size="18.0"/>
+                </font>
+            </Label>
+            <HBox HBox.hgrow="ALWAYS" />
+            <Label fx:id="userLabel" text="Welcome, User" />
+            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" 
+                    text="Logout" styleClass="secondary-button"/>
+        </HBox>
+    </top>
+    <center>
+        <TabPane fx:id="tabPane" styleClass="tab-pane">
+            <tabs>
+                <Tab text="My Wardrobe" closable="false">
+                    <content>
+                        <fx:include source="WardrobeView.fxml"/>
+                    </content>
+                </Tab>
+                <Tab text="Create Outfit" closable="false">
+                    <content>
+                        <fx:include source="OutfitCreatorView.fxml"/>
+                    </content>
+                </Tab>
+                <Tab text="AI Recommendations" closable="false">
+                    <content>
+                        <fx:include source="AIRecommendationsView.fxml"/>
+                    </content>
+                </Tab>
+                <Tab text="Store" closable="false">
+                    <content>
+                        <fx:include source="StoreView.fxml"/>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10.0" styleClass="bottom-bar">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
+            </padding>
+            <Label text="© 2025 Fashion Store System" />
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="content-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.fashionstore.controllers.AIRecommendationsController">
+    <top>
+        <VBox spacing="10.0">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label text="AI Outfit Recommendations" styleClass="section-title" />
+                <HBox HBox.hgrow="ALWAYS" />
+                <Button fx:id="backToShoppingButton" text="Back to Shopping" onAction="#backToShopping" styleClass="back-button"/>
+            </HBox>
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Label text="Let our AI suggest outfits based on your style preferences and wardrobe." />
+            </HBox>
+            
+            <!-- Add control panel for filtering options -->
+            <HBox spacing="15.0" alignment="CENTER_LEFT" styleClass="control-panel">
+                <padding>
+                    <Insets top="10.0" bottom="10.0" />
+                </padding>
+                <GridPane hgap="10" vgap="5">
+                    <padding>
+                        <Insets top="5.0" right="15.0" bottom="5.0" left="5.0" />
+                    </padding>
+                    
+                    <!-- Style selection -->
+                    <Label text="Style:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <ComboBox fx:id="styleComboBox" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    
+                    <!-- Season selection -->
+                    <Label text="Season:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <ComboBox fx:id="seasonComboBox" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                </GridPane>
+                
+                <Button fx:id="generateButton" text="Generate Recommendations" onAction="#generateRecommendations"
+                        styleClass="primary-button" />
+                        
+                <ProgressIndicator fx:id="progressIndicator" prefHeight="30" prefWidth="30" />
+                
+                <HBox HBox.hgrow="ALWAYS" />
+                
+                <Label fx:id="statusLabel" styleClass="status-label" />
+            </HBox>
+            
+            <Separator />
+        </VBox>
+    </top>
+    <center>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <ScrollPane fitToWidth="true" styleClass="transparent-scroll-pane" VBox.vgrow="ALWAYS">
+                <VBox fx:id="recommendationsContainer" spacing="30.0" />
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>

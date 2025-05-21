@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" styleClass="admin-panel" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fashionstore.controllers.AdminController">
+   <top>
+      <VBox>
+         <MenuBar>
+            <menus>
+               <Menu text="File">
+                  <items>
+                     <MenuItem text="Export Data" onAction="#exportData"/>
+                     <MenuItem text="Import Data" onAction="#importData"/>
+                     <SeparatorMenuItem />
+                     <MenuItem text="Exit" onAction="#handleExit"/>
+                  </items>
+               </Menu>
+               <Menu text="View">
+                  <items>
+                     <MenuItem text="Refresh" onAction="#refreshView"/>
+                  </items>
+               </Menu>
+               <Menu text="Tools">
+                  <items>
+                     <MenuItem text="Set Default Images" onAction="#setDefaultImagesForProducts"/>
+                     <MenuItem text="User Management" onAction="#showUserManagement"/>
+                     <MenuItem text="Analytics Dashboard" onAction="#showAnalytics"/>
+                  </items>
+               </Menu>
+               <Menu text="Help">
+                  <items>
+                     <MenuItem text="About" onAction="#openAbout"/>
+                  </items>
+               </Menu>
+            </menus>
+         </MenuBar>
+         
+         <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="header-pane">
+            <padding>
+               <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+            </padding>
+            <Label styleClass="header-title" text="Admin Dashboard">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label styleClass="subheader" text="Manage store products and inventory">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" spacing="10">
+                  <Button fx:id="themeToggleButton" text="Toggle Theme" onAction="#toggleTheme" styleClass="theme-toggle-button"/>
+                  <Button mnemonicParsing="false" onAction="#backToLogin" styleClass="back-button" text="Back to Login" />
+            </HBox>
+      </HBox>
+      </VBox>
+   </top>
+   <center>
+      <VBox spacing="10.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <padding>
+               <Insets bottom="10.0" top="10.0" />
+            </padding>
+                  <Label styleClass="section-header" text="Product Inventory">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" spacing="10.0">
+                        <Button mnemonicParsing="false" onAction="#openItemAdder" styleClass="action-button" text="Add New" />
+                        <Button mnemonicParsing="false" onAction="#editSelectedItem" styleClass="action-button" text="Edit" />
+                        <Button mnemonicParsing="false" onAction="#removeSelectedItem" styleClass="delete-button" text="Remove" />
+                        <Button mnemonicParsing="false" onAction="#toggleProductVisibility" styleClass="action-button" text="Toggle Visibility" />
+                  </HBox>
+            </HBox>
+            <TableView fx:id="productTable" editable="true" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="nameColumn" prefWidth="250.0" text="Product Name" />
+                  <TableColumn fx:id="categoryColumn" prefWidth="150.0" text="Category" />
+                  <TableColumn fx:id="priceColumn" prefWidth="120.0" text="Price" />
+                  <TableColumn fx:id="stockColumn" prefWidth="100.0" text="Stock" />
+                  <TableColumn fx:id="visibilityColumn" prefWidth="100.0" text="Visibility" />
+               </columns>
+            </TableView>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" spacing="10.0" styleClass="footer-pane">
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+         <Label fx:id="statusLabel" text="Ready" styleClass="status-label" HBox.hgrow="ALWAYS" />
+         <Button mnemonicParsing="false" onAction="#showUserManagement" styleClass="action-button" text="User Management" />
+         <Button mnemonicParsing="false" onAction="#showAnalytics" styleClass="action-button" text="Analytics" />
+      </HBox>
+   </bottom>
+</BorderPane>

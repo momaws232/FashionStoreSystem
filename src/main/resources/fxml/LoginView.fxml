@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.fashionstore.controllers.LoginController">
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="View">
+                    <items>
+                        <MenuItem text="Exit" onAction="#handleExit"/>
+                    </items>
+                </Menu>
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="About" onAction="#openAbout"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    
+    <center>
+        <VBox alignment="CENTER" maxWidth="450" styleClass="login-pane">
+            <padding>
+                <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+            </padding>
+            <Label text="FASHION STORE" styleClass="login-header">
+                <font>
+                    <Font size="28.0" />
+                </font>
+            </Label>
+            
+            <HBox alignment="CENTER" spacing="10">
+                <padding>
+                    <Insets top="15.0" />
+                </padding>
+                <Button fx:id="themeToggleButton" text="Toggle Theme" onAction="#toggleTheme" styleClass="theme-toggle-button"/>
+            </HBox>
+            
+            <VBox spacing="8" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="30.0" />
+                </padding>
+                <Label text="Username" styleClass="form-label"/>
+                <TextField fx:id="usernameField" promptText="Enter your username" prefWidth="300"/>
+            </VBox>
+
+            <VBox spacing="8" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="15.0" />
+                </padding>
+            <Label text="Password" styleClass="form-label"/>
+                <PasswordField fx:id="passwordField" promptText="Enter your password" prefWidth="300"/>
+            </VBox>
+
+            <Label fx:id="errorLabel" styleClass="error-label" visible="false">
+                <padding>
+                    <Insets top="15.0" />
+                </padding>
+            </Label>
+
+            <HBox spacing="15" alignment="CENTER">
+                <padding>
+                    <Insets top="30.0" bottom="10.0"/>
+                </padding>
+                <Button fx:id="loginButton" text="Login" onAction="#handleLogin"
+                        styleClass="action-button" prefWidth="140" prefHeight="40"/>
+                <Button fx:id="registerButton" text="Register" onAction="#showRegistration"
+                        styleClass="secondary-button" prefWidth="140" prefHeight="40"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

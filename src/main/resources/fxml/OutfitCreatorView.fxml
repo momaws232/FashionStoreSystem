@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import com.fashionstore.ui.components.BodyCanvas?>
+
+<BorderPane fx:id="rootPane" styleClass="outfit-creator-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fashionstore.controllers.OutfitCreatorController">
+    <top>
+        <VBox spacing="10.0">
+            <padding>
+                <Insets bottom="15.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <Label text="Create Your Perfect Outfit" styleClass="page-title"/>
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Label text="Outfit Name:" />
+                <TextField fx:id="outfitNameField" promptText="Enter outfit name" HBox.hgrow="ALWAYS" />
+            </HBox>
+            <Label text="Drag items from your wardrobe to create your outfit" styleClass="instruction-text"/>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="transparent-scroll-pane" pannable="true">
+            <HBox spacing="20">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                </padding>
+
+                <!-- Left side: Wardrobe items with categories -->
+                <VBox spacing="10" HBox.hgrow="ALWAYS" prefWidth="300" maxWidth="400">
+                    <Label text="Your Wardrobe" styleClass="section-header"/>
+                    
+                    <!-- Category filter buttons -->
+                    <HBox spacing="5" styleClass="category-filter">
+                        <Button fx:id="allCategoryButton" text="All" onAction="#filterCategory" styleClass="category-button, category-selected" userData="all"/>
+                        <Button fx:id="topsButton" text="Tops" onAction="#filterCategory" styleClass="category-button" userData="tops"/>
+                        <Button fx:id="bottomsButton" text="Bottoms" onAction="#filterCategory" styleClass="category-button" userData="bottoms"/>
+                        <Button fx:id="shoesButton" text="Shoes" onAction="#filterCategory" styleClass="category-button" userData="shoes"/>
+                        <Button fx:id="accessoriesButton" text="Accessories" onAction="#filterCategory" styleClass="category-button" userData="accessories"/>
+                    </HBox>
+                    
+                    <!-- Search results label for filtered categories -->
+                    <Label fx:id="filterResultsLabel" styleClass="filter-results-label" text="Showing all items" />
+                    
+                    <!-- Scrollable wardrobe items with fixed height -->
+                    <ScrollPane fitToWidth="true" styleClass="transparent-scroll-pane" VBox.vgrow="ALWAYS" maxHeight="400">
+                        <FlowPane fx:id="wardrobeItemsPane" hgap="10" vgap="10" styleClass="wardrobe-items-pane" />
+                    </ScrollPane>
+                </VBox>
+
+                <!-- Center: Body Canvas for outfit building -->
+                <BodyCanvas fx:id="bodyCanvas" HBox.hgrow="NEVER" />
+
+                <!-- Right side: Outfit details and AI suggestions -->
+                <VBox spacing="10" HBox.hgrow="ALWAYS" prefWidth="250" maxWidth="350" styleClass="outfit-details-pane">
+                    <Label text="Outfit Preview" styleClass="section-header"/>
+                    
+                    <!-- Items in current outfit - with fixed height -->
+                    <ScrollPane fitToWidth="true" styleClass="transparent-scroll-pane" prefHeight="200" maxHeight="200">
+                        <FlowPane fx:id="outfitPreviewPane" hgap="15" vgap="15" styleClass="outfit-preview" maxHeight="200" />
+                    </ScrollPane>
+                    
+                    <Label text="AI Style Assistant" styleClass="section-header"/>
+                    <Label fx:id="styleRatingLabel" text="Style Rating: -" styleClass="style-rating"/>
+                    
+                    <!-- AI Recommendations -->
+                    <VBox fx:id="aiSuggestionsPane" spacing="5" styleClass="ai-suggestions" maxHeight="150">
+                        <Label text="Add some items to get AI suggestions" styleClass="suggestion-placeholder"/>
+                    </VBox>
+                    
+                    <!-- AI Generate button -->
+                    <Button fx:id="generateSuggestionsButton" text="Generate AI Outfit" onAction="#generateAiOutfit" 
+                            styleClass="ai-button" />
+                </VBox>
+            </HBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="15.0" styleClass="action-bar">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="15.0" />
+            </padding>
+            <Button fx:id="closeButton" text="Close" onAction="#closeWindow" styleClass="secondary-button" />
+            <Button fx:id="clearButton" text="Clear" onAction="#clearOutfit" styleClass="secondary-button" />
+            <Button fx:id="saveButton" text="Save Outfit" onAction="#saveOutfit" styleClass="action-button" />
+        </HBox>
+    </bottom>
+</BorderPane>

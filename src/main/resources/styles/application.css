@@ -1,0 +1,1359 @@
+/* Monotone Grayscale Stylish Theme for JavaFX with Enhanced Animations */
+
+/* Color palette */
+* {
+    -fx-primary: #262626;
+    -fx-primary-light: #404040;
+    -fx-primary-dark: #0D0D0D;
+    -fx-mid-gray: #737373;
+    -fx-light-gray: #F0F0F0;
+    -fx-background: #FFFFFF;
+    -fx-accent: #595959;
+    -fx-focus-color: derive(-fx-accent, 20%);
+    -fx-focus-shadow: rgba(89,89,89,0.4);
+    -fx-error: #8C0000;
+    
+    /* Modern accent colors */
+    -fx-accent-blue: #0078D7;
+    -fx-accent-green: #107C10;
+    -fx-accent-red: #E81123;
+    -fx-accent-orange: #F7630C;
+
+    /* Text colors */
+    -fx-text-primary: #000000;      /* Black for primary text */
+    -fx-text-secondary: #3a3a3a;    /* Dark gray for secondary text */
+    -fx-text-disabled: #a0a0a0;     /* Medium gray for disabled text */
+
+    /* Animation durations */
+    -fx-fast-duration: 150ms;
+    -fx-medium-duration: 250ms;
+    -fx-slow-duration: 400ms;
+}
+
+/* Base styles with improved animation */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #f5f5f5, -fx-background);
+    -fx-transition: -fx-background-color 1000ms ease-out;
+    -fx-text-fill: -fx-text-primary;
+}
+
+/* Default text styling for all elements */
+.label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.text-field, .password-field, .text-area {
+    -fx-text-fill: -fx-text-primary;
+    -fx-prompt-text-fill: -fx-text-secondary;
+}
+
+.combo-box .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.combo-box-popup .list-cell {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.checkbox {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.radio-button {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.list-cell {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.table-cell {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root-container {
+    -fx-background-color: -fx-background;
+    -fx-fit-to-width: true;
+    -fx-fit-to-height: true;
+    -fx-min-width: 1024px;
+    -fx-min-height: 768px;
+    -fx-pref-width: 1024px;
+    -fx-pref-height: 768px;
+    -fx-transition: -fx-background-color -fx-medium-duration ease-out;
+    animation: fadeIn -fx-slow-duration ease;
+}
+
+.main-container, .wardrobe-container {
+    -fx-background-color: -fx-background;
+    -fx-transition: -fx-background-color -fx-medium-duration ease-out;
+    animation: fadeIn -fx-slow-duration ease;
+    -fx-fit-to-width: true;
+    -fx-fit-to-height: true;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Top Bar with improved shadow */
+.top-bar {
+    -fx-background-color: linear-gradient(to bottom, -fx-primary, derive(-fx-primary, -10%));
+    -fx-padding: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 10, 0, 0, 3);
+    -fx-transition: -fx-effect -fx-medium-duration ease;
+}
+.top-bar:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.45), 14, 0, 0, 4);
+}
+
+/* Brand title with improved styling */
+.brand-title {
+    -fx-text-fill: -fx-light-gray;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 4px;
+    -fx-transition: -fx-text-fill -fx-medium-duration ease, 
+                   -fx-scale-x -fx-fast-duration ease,
+                   -fx-scale-y -fx-fast-duration ease;
+}
+.brand-title:hover {
+    -fx-text-fill: white;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Navigation & Cart Buttons with improved animations */
+.nav-button, .logout-button, .cart-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-light-gray;
+    -fx-font-size: 15px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-cursor: hand;
+    -fx-transition: background-color -fx-medium-duration ease,
+    -fx-scale-x -fx-fast-duration ease,
+    -fx-scale-y -fx-fast-duration ease,
+    -fx-rotate -fx-medium-duration ease,
+    -fx-effect -fx-medium-duration ease;
+}
+.nav-button:hover, .logout-button:hover, .cart-button:hover {
+    -fx-background-color: derive(-fx-primary-light, -15%);
+    -fx-text-fill: white;
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 8, 0, 0, 2);
+}
+.nav-button:pressed, .logout-button:pressed, .cart-button:pressed {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-rotate: -2;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 4, 0, 0, 1);
+}
+
+/* Responsive containers */
+.flow-pane-maximized {
+    -fx-alignment: top-left;
+    -fx-row-valignment: top;
+    -fx-column-halignment: left;
+    -fx-hgap: 20;
+    -fx-vgap: 20;
+    -fx-padding: 20;
+    -fx-pref-height: -1;
+    -fx-pref-width: 100%;
+}
+
+/* Login specific styling */
+.login-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #EEEEEE;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);
+    -fx-padding: 40px;
+    -fx-spacing: 15px;
+    -fx-alignment: center;
+    -fx-max-width: 450px;
+    -fx-min-width: 350px;
+}
+
+/* Search Bar with improved focus animation */
+.search-bar {
+    -fx-background-color: -fx-light-gray;
+    -fx-border-color: -fx-mid-gray;
+    -fx-border-width: 0 0 2 0;
+    -fx-padding: 16 20;
+    -fx-background-radius: 8px;
+    -fx-transition: -fx-border-color -fx-medium-duration ease,
+    -fx-background-color -fx-medium-duration ease,
+    -fx-effect -fx-medium-duration ease,
+    -fx-translate-y -fx-medium-duration ease;
+}
+.search-bar:focused {
+    -fx-border-color: -fx-focus-color;
+    -fx-background-color: derive(-fx-light-gray, 15%);
+    -fx-effect: dropshadow(gaussian, -fx-focus-shadow, 10, 0, 0, 0);
+    -fx-translate-y: -2px;
+}
+.search-button {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: -fx-background;
+    -fx-padding: 8 24;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30px;
+    -fx-transition: -fx-background-color -fx-medium-duration ease,
+    -fx-effect -fx-medium-duration ease,
+    -fx-scale-x -fx-fast-duration ease,
+    -fx-scale-y -fx-fast-duration ease;
+}
+.search-button:hover {
+    -fx-background-color: derive(-fx-accent, -20%);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 6, 0, 0, 2);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+.search-button:pressed {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 2, 0, 0, 1);
+}
+
+/* Section Headers with elegant animations */
+.section-header, .wardrobe-title {
+    -fx-text-fill: -fx-primary-dark;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 0;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: transparent;
+    -fx-transition: -fx-border-color -fx-slow-duration ease,
+    -fx-translate-y -fx-medium-duration ease;
+}
+.section-header:hover, .wardrobe-title:hover {
+    -fx-border-color: derive(-fx-primary-light, 30%);
+    -fx-translate-y: -1px;
+}
+
+/* Consistent button styling regardless of container */
+.button, .action-button {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-accent, 10%), -fx-accent);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 20;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-cursor: hand;
+    -fx-transition: -fx-background-color -fx-medium-duration ease,
+    -fx-effect -fx-medium-duration ease,
+    -fx-scale-x -fx-fast-duration ease,
+    -fx-scale-y -fx-fast-duration ease;
+}
+
+.button:hover, .action-button:hover {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-accent, 20%), derive(-fx-accent, 10%));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 8, 0, 0, 2);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.button:pressed, .action-button:pressed {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-accent, -5%), derive(-fx-accent, 5%));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 0, 0, 1);
+}
+
+/* Enhanced Form Controls with fluid transitions */
+.text-field, .password-field, .combo-box {
+    -fx-background-color: -fx-background;
+    -fx-border-color: -fx-mid-gray;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 10;
+    -fx-prompt-text-fill: derive(-fx-mid-gray, 20%);
+    -fx-transition: -fx-border-color -fx-medium-duration ease,
+    -fx-background-color -fx-medium-duration ease,
+    -fx-effect -fx-medium-duration ease,
+    -fx-translate-y -fx-medium-duration ease;
+}
+.text-field:focused, .password-field:focused, .combo-box:focused {
+    -fx-border-color: -fx-focus-color;
+    -fx-background-color: derive(-fx-background, 5%);
+    -fx-effect: dropshadow(gaussian, -fx-focus-shadow, 8, 0, 0, 0);
+    -fx-translate-y: -1px;
+}
+.text-field:hover, .password-field:hover, .combo-box:hover {
+    -fx-border-color: derive(-fx-focus-color, -20%);
+    -fx-background-color: derive(-fx-background, 2%);
+}
+
+/* Improved Scroll Pane with smooth scrolling */
+.transparent-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-fit-to-width: true;
+    -fx-fit-to-height: true;
+    -fx-pref-height: -1;
+    -fx-max-height: 2000px;
+    -fx-hbar-policy: never;
+}
+.transparent-scroll-pane .scroll-bar:vertical .thumb,
+.transparent-scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: -fx-mid-gray;
+    -fx-background-radius: 5em;
+    -fx-transition: -fx-background-color -fx-medium-duration ease,
+    -fx-scale-x -fx-fast-duration ease,
+    -fx-scale-y -fx-fast-duration ease;
+}
+.transparent-scroll-pane .scroll-bar:vertical .thumb:hover,
+.transparent-scroll-pane .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: derive(-fx-mid-gray, -15%);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+.transparent-scroll-pane .scroll-bar:vertical .thumb:pressed,
+.transparent-scroll-pane .scroll-bar:horizontal .thumb:pressed {
+    -fx-background-color: derive(-fx-mid-gray, -30%);
+}
+.transparent-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Enhanced Purchase & Add-to-Cart Buttons with fluid animations */
+.purchase-button, .add-to-cart-button {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-primary, 15%), -fx-primary);
+    -fx-text-fill: -fx-light-gray;
+    -fx-font-size: 12px;
+    -fx-padding: 8 18;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
+    -fx-transition: -fx-background-color -fx-medium-duration ease,
+    -fx-effect -fx-medium-duration ease,
+    -fx-scale-x -fx-fast-duration ease,
+    -fx-scale-y -fx-fast-duration ease,
+    -fx-rotate -fx-fast-duration ease,
+    -fx-translate-y -fx-fast-duration ease;
+}
+.purchase-button:hover, .add-to-cart-button:hover {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-primary, 30%), derive(-fx-primary, 5%));
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 3);
+    -fx-scale-x: 1.06;
+    -fx-scale-y: 1.06;
+    -fx-translate-y: -2px;
+}
+.purchase-button:pressed, .add-to-cart-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-primary, -5%), -fx-primary);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+    -fx-rotate: -1deg;
+    -fx-translate-y: 1px;
+}
+
+/* Login Page Card with elegant animations */
+.login-pane:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 16, 0, 0, 6);
+    -fx-scale-x: 1.01;
+    -fx-scale-y: 1.01;
+}
+.login-header {
+    -fx-text-fill: -fx-primary;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-padding: 0 0 24 0;
+    -fx-transition: -fx-text-fill -fx-medium-duration ease;
+}
+.form-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-primary-dark;
+    -fx-padding: 8 0 4 0;
+    -fx-transition: -fx-translate-x -fx-medium-duration ease;
+}
+.text-field:focused + .form-label, .password-field:focused + .form-label {
+    -fx-translate-x: 5px;
+}
+.login-button {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-primary, 20%), -fx-primary);
+    -fx-text-fill: -fx-light-gray;
+    -fx-font-size: 14px;
+    -fx-padding: 10 0;
+    -fx-background-radius: 24px;
+    -fx-cursor: hand;
+    -fx-min-width: 280px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 6, 0, 0, 2);
+    -fx-transition: -fx-background-color -fx-medium-duration ease,
+    -fx-effect -fx-medium-duration ease,
+    -fx-scale-x -fx-fast-duration ease,
+    -fx-scale-y -fx-fast-duration ease,
+    -fx-translate-y -fx-fast-duration ease;
+}
+.login-button:hover {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-primary, 40%), derive(-fx-primary, 10%));
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 4);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-translate-y: -2px;
+}
+.login-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-primary, -10%), -fx-primary);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 3, 0, 0, 1);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-translate-y: 1px;
+}
+.error-label {
+    -fx-text-fill: -fx-error;
+    -fx-font-size: 13px;
+    -fx-padding: 6 0 0 0;
+    -fx-transition: -fx-translate-x -fx-fast-duration ease-in-out;
+    -fx-animation: shake 500ms ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { -fx-translate-x: 0; }
+    10%, 30%, 50%, 70%, 90% { -fx-translate-x: -5px; }
+    20%, 40%, 60%, 80% { -fx-translate-x: 5px; }
+}
+
+/* TableView styling with smooth animations */
+.table-view {
+    -fx-background-color: -fx-background;
+    -fx-table-cell-border-color: derive(-fx-light-gray, -10%);
+    -fx-transition: -fx-effect -fx-medium-duration ease;
+}
+.table-view:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);
+}
+.table-view .column-header {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-light-gray, 10%), -fx-light-gray);
+    -fx-padding: 8;
+    -fx-border-color: derive(-fx-light-gray, -15%);
+    -fx-border-width: 0 0 1 0;
+    -fx-background-radius: 4px 4px 0 0;
+    -fx-transition: -fx-background-color -fx-medium-duration ease;
+}
+.table-view .column-header:hover {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-light-gray, 20%), derive(-fx-light-gray, 5%));
+}
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary;
+    -fx-transition: -fx-text-fill -fx-medium-duration ease;
+}
+.table-view .column-header:hover .label {
+    -fx-text-fill: derive(-fx-primary, -20%);
+}
+.table-view .table-row-cell {
+    -fx-border-color: derive(-fx-light-gray, -20%);
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 6 0;
+    -fx-transition: -fx-background-color -fx-fast-duration ease;
+}
+.table-view .table-row-cell:odd {
+    -fx-background-color: -fx-light-gray;
+}
+.table-view .table-row-cell:hover {
+    -fx-background-color: derive(-fx-light-gray, -5%);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 1);
+    -fx-cursor: hand;
+}
+.table-view .table-row-cell:selected {
+    -fx-background-color: derive(-fx-primary-light, 20%);
+    animation: pulse 1s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { -fx-background-color: derive(-fx-primary-light, 40%); }
+    50% { -fx-background-color: derive(-fx-primary-light, 10%); }
+    100% { -fx-background-color: derive(-fx-primary-light, 20%); }
+}
+
+/* Adding page transition animations */
+.page-transition {
+    -fx-animation: fadeSlideIn -fx-slow-duration ease-out;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        -fx-translate-y: 20px;
+    }
+    to {
+        opacity: 1;
+        -fx-translate-y: 0;
+    }
+}
+
+/* Card animations for product items */
+.product-card {
+    -fx-background-color: -fx-background;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: derive(-fx-light-gray, -10%);
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 1);
+    -fx-transition: -fx-effect -fx-medium-duration ease,
+    -fx-border-color -fx-medium-duration ease,
+    -fx-translate-y -fx-medium-duration ease,
+    -fx-scale-x -fx-medium-duration ease,
+    -fx-scale-y -fx-medium-duration ease;
+}
+.product-card:hover {
+    -fx-border-color: derive(-fx-mid-gray, -20%);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 4);
+    -fx-translate-y: -3px;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+/* Window maximization styles */
+.page-transition {
+    -fx-animation: fadeSlideIn 400ms ease-out;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        -fx-translate-y: 15px;
+    }
+    to {
+        opacity: 1;
+        -fx-translate-y: 0;
+    }
+}
+
+/* Main container sizing for maximized window */
+.main-container {
+    -fx-pref-width: 100%;
+    -fx-pref-height: 100%;
+    -fx-min-width: 800px;
+    -fx-min-height: 600px;
+}
+
+/* FlowPane optimization for maximized display */
+.transparent-scroll-pane {
+    -fx-fit-to-width: true;
+    -fx-fit-to-height: true;
+    -fx-hbar-policy: never;
+    -fx-background-color: transparent;
+}
+
+/* Brand title enhancement for maximized view */
+.brand-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-light-gray;
+    -fx-padding: 0 10 0 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 2, 0, 0, 1);
+    -fx-transition: -fx-scale-x 200ms ease, -fx-scale-y 200ms ease, -fx-effect 200ms ease;
+}
+
+.brand-title:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 4, 0, 0, 2);
+}
+
+/* Cart count badge */
+.cart-count-badge {
+    -fx-background-color: -fx-light-gray;
+    -fx-text-fill: -fx-primary;
+    -fx-background-radius: 50%;
+    -fx-padding: 2 6;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-transition: -fx-background-color 200ms ease, -fx-scale-x 200ms ease, -fx-scale-y 200ms ease;
+}
+
+.cart-count-badge-active {
+    -fx-background-color: #ffc107;
+    -fx-effect: dropshadow(gaussian, rgba(255,193,7,0.4), 6, 0, 0, 0);
+    -fx-animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { -fx-scale-x: 1.0; -fx-scale-y: 1.0; }
+    50% { -fx-scale-x: 1.2; -fx-scale-y: 1.2; }
+    100% { -fx-scale-x: 1.0; -fx-scale-y: 1.0; }
+}
+
+/* Enhanced Store Item Styles with smoother animations */
+.store-item {
+    -fx-background-color: -fx-background;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-border-color: rgba(0,0,0,0.05);
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 2);
+    -fx-transition: -fx-background-color 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-border-color 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-effect 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-translate-y 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-scale-x 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-scale-y 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.store-item:hover {
+    -fx-background-color: derive(-fx-background, 3%);
+    -fx-border-color: rgba(0,0,0,0.1);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 4);
+    -fx-translate-y: -4px;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.store-item .image-container {
+    -fx-background-color: transparent;
+    -fx-background-radius: 12px 12px 0 0;
+    -fx-padding: 0;
+    -fx-transition: -fx-scale-x 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-scale-y 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.store-item:hover .image-container {
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+.store-item .product-details {
+    -fx-background-color: linear-gradient(to bottom, transparent, rgba(0,0,0,0.02));
+    -fx-background-radius: 0 0 12px 12px;
+    -fx-padding: 12px;
+    -fx-spacing: 6px;
+}
+
+.store-item .item-name {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary;
+}
+
+.store-item .item-price {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-light;
+}
+
+.store-item .item-info {
+    -fx-font-size: 13px;
+    -fx-text-fill: -fx-mid-gray;
+    -fx-opacity: 0.9;
+}
+
+.store-item .add-to-cart-button {
+    -fx-min-width: 100%;
+    -fx-padding: 10px;
+    -fx-font-size: 13px;
+    -fx-alignment: center;
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-primary, 15%), -fx-primary);
+    -fx-text-fill: -fx-light-gray;
+    -fx-background-radius: 6px;
+    -fx-transition: -fx-background-color 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-scale-x 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-scale-y 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-translate-y 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.store-item .add-to-cart-button:hover {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-primary, 25%), derive(-fx-primary, 5%));
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-translate-y: -2px;
+}
+
+.store-item .add-to-cart-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-translate-y: 1px;
+}
+
+/* Animation for new items appearing */
+@keyframes itemFadeIn {
+    0% {
+        opacity: 0;
+        -fx-translate-y: 20px;
+    }
+    100% {
+        opacity: 1;
+        -fx-translate-y: 0;
+    }
+}
+
+.item-fade-in {
+    animation: itemFadeIn 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Placeholder initial styling */
+.placeholder-initial {
+    -fx-font-size: 50px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(255,255,255,0.7);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+.button-hover {
+    -fx-background-color: derive(-fx-primary, 5%);
+}
+
+/* Main container adjustments for proper vertical sizing */
+.main-container {
+    -fx-pref-width: 100%;
+    -fx-pref-height: 100%;
+    -fx-min-height: 600px;
+}
+
+/* Fix for white screen and overall layout */
+.root-container {
+    -fx-background-color: linear-gradient(to bottom, #f5f5f5, -fx-background);
+    visibility: visible !important;
+}
+
+/* Fix for vertically stretched layout */
+.main-container {
+    -fx-pref-width: 100%;
+    -fx-pref-height: 100%;
+    -fx-max-height: 100%;
+    -fx-min-height: 600px;
+}
+
+/* ScrollPane improvements */
+.transparent-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-fit-to-width: true;
+    -fx-padding: 0;
+    -fx-pref-height: -1;
+    -fx-max-height: 2000px; /* Limit maximum height */
+}
+
+.transparent-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* FlowPane improvements */
+.flow-pane-maximized {
+    -fx-alignment: center-left;
+    -fx-row-valignment: top;
+    -fx-hgap: 20;
+    -fx-vgap: 20;
+    -fx-padding: 20;
+    -fx-pref-height: -1;
+}
+
+/* Payment Method Logo Animations */
+.payment-logo-container {
+    -fx-alignment: center;
+    -fx-padding: 0 0 0 15;
+    -fx-opacity: 0;
+    -fx-translate-x: -30px; /* Start off-screen to the left */
+    -fx-transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+/* Show and animate the selected payment logo */
+.credit-card-selected .creditcard-logo-container,
+.paypal-selected .paypal-logo-container,
+.store-pickup-selected .store-pickup-container {
+    -fx-opacity: 1;
+    -fx-translate-x: 0;
+}
+
+/* Hide other logos */
+.credit-card-selected .paypal-logo-container,
+.credit-card-selected .store-pickup-container,
+.paypal-selected .creditcard-logo-container,
+.paypal-selected .store-pickup-container,
+.store-pickup-selected .creditcard-logo-container,
+.store-pickup-selected .paypal-logo-container {
+    -fx-opacity: 0;
+    -fx-translate-x: -30px;
+}
+
+/* Logo image styling */
+.payment-logo-container > .image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 1);
+    -fx-transition: all 200ms ease;
+}
+
+/* Hover effects */
+.payment-logo-container > .image-view:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0, 0, 2);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Animation for logo appearance */
+@keyframes logoFadeIn {
+    from {
+        -fx-opacity: 0;
+        -fx-translate-x: -10px;
+    }
+    to {
+        -fx-opacity: 1;
+        -fx-translate-x: 0;
+    }
+}
+.creditcard-logo-container {
+    -fx-opacity: 1;
+    -fx-translate-x: 0;
+}
+.credit-card-selected .creditcard-logo-container,
+.paypal-selected .paypal-logo-container,
+.store-pickup-selected .store-pickup-container {
+    -fx-opacity: 1;
+    -fx-translate-x: 0;
+}
+
+.payment-logo-animate {
+    -fx-animation: logoFadeIn 300ms ease-out;
+}
+.payment-logo-container {
+    -fx-transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+/* Radio button styles */
+.radio-button {
+    -fx-padding: 10 15 10 0;
+    -fx-cursor: hand;
+    -fx-transition: -fx-text-fill 200ms ease;
+}
+
+.radio-button:selected {
+    -fx-text-fill: -fx-primary-dark;
+}
+
+.radio-button .radio {
+    -fx-background-color: -fx-background;
+    -fx-border-color: -fx-mid-gray;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 3px;
+    -fx-transition: -fx-border-color 200ms ease;
+}
+
+.radio-button:selected .radio {
+    -fx-border-color: -fx-primary;
+}
+
+.radio-button .dot {
+    -fx-background-color: -fx-primary;
+    -fx-background-radius: 7px;
+    -fx-padding: 4px;
+    -fx-transition: -fx-scale-x 200ms ease, -fx-scale-y 200ms ease;
+}
+
+.radio-button:selected .dot {
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+/* Info label styling */
+.info-label {
+    -fx-text-fill: -fx-mid-gray;
+    -fx-font-size: 13px;
+    -fx-font-style: italic;
+}
+
+/* Stock Labels */
+.stock-out {
+    -fx-text-fill: #dc3545;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 3 0;
+    -fx-background-color: rgba(220, 53, 69, 0.1);
+    -fx-background-radius: 4px;
+    -fx-padding: 4 8;
+}
+
+.stock-low {
+    -fx-text-fill: #fd7e14;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 3 0;
+    -fx-background-color: rgba(253, 126, 20, 0.1);
+    -fx-background-radius: 4px;
+    -fx-padding: 4 8;
+}
+
+.stock-available {
+    -fx-text-fill: #28a745;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 3 0;
+    -fx-background-color: rgba(40, 167, 69, 0.1);
+    -fx-background-radius: 4px;
+    -fx-padding: 4 8;
+}
+
+/* Disabled purchase button styles */
+.add-to-cart-button:disabled {
+    -fx-background-color: -fx-mid-gray;
+    -fx-opacity: 0.7;
+    -fx-cursor: default;
+}
+
+.add-to-cart-button:disabled:hover {
+    -fx-scale-x: 1.0;
+    -fx-scale-y: 1.0;
+    -fx-effect: none;
+    -fx-translate-y: 0;
+}
+
+/* Back button with animations */
+.back-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-accent;
+    -fx-border-color: -fx-accent;
+    -fx-border-width: 1px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 6px 16px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-transition: -fx-background-color 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-text-fill 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-scale-x 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-scale-y 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-translate-y 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.back-button:hover {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: -fx-background;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-translate-y: -1px;
+}
+
+.back-button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-translate-y: 1px;
+}
+
+/* Remove button for cart items */
+.remove-button {
+    -fx-background-color: -fx-accent-red;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+    -fx-transition: -fx-background-color 200ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-scale-x 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                   -fx-scale-y 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.remove-button:hover {
+    -fx-background-color: derive(-fx-accent-red, -20%);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.remove-button:pressed {
+    -fx-background-color: derive(-fx-accent-red, -40%);
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* Outfit Creator Styles */
+.outfit-creator-container {
+    -fx-background-color: -fx-background;
+}
+
+.page-title {
+    -fx-text-fill: -fx-primary-dark;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 0;
+}
+
+.category-filter {
+    -fx-padding: 5px;
+    -fx-spacing: 5px;
+    -fx-alignment: center-left;
+}
+
+.category-button {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: -fx-primary-dark;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 15px;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-transition: -fx-background-color 0.2s, -fx-text-fill 0.2s;
+}
+
+.category-button:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.category-selected {
+    -fx-background-color: -fx-primary-light;
+    -fx-text-fill: white;
+}
+
+.filter-results-label {
+    -fx-font-style: italic;
+    -fx-text-fill: -fx-mid-gray;
+    -fx-font-size: 12px;
+    -fx-padding: 5px 0;
+}
+
+.wardrobe-items-pane {
+    -fx-background-color: white;
+    -fx-padding: 10px;
+}
+
+.clothing-item {
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #eeeeee;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);
+    -fx-cursor: hand;
+    -fx-transition: -fx-background-color 0.2s, -fx-effect 0.3s, -fx-scale-x 0.2s, -fx-scale-y 0.2s;
+}
+
+.clothing-item:hover {
+    -fx-background-color: #f9f9f9;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+.clothing-item-selected {
+    -fx-border-color: -fx-accent-blue;
+    -fx-border-width: 2px;
+}
+
+.clothing-item-dragging {
+    -fx-opacity: 0.8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 3);
+}
+
+.clothing-item-name {
+    -fx-font-weight: bold;
+    -fx-padding: 5px 0 2px 0;
+}
+
+.clothing-item-info {
+    -fx-text-fill: -fx-mid-gray;
+    -fx-font-size: 11px;
+}
+
+.clothing-item-compact {
+    -fx-padding: 5px;
+    -fx-max-width: 120px;
+    -fx-max-height: 120px;
+}
+
+/* Body Canvas Styles */
+.body-canvas {
+    -fx-background-color: rgba(250, 250, 250, 0.7);
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-padding: 20px;
+    -fx-min-width: 300px;
+    -fx-pref-width: 300px;
+    -fx-max-width: 400px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);
+}
+
+.drop-zone {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-alignment: center;
+    -fx-padding: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 1);
+    -fx-transition: -fx-background-color 0.2s, -fx-border-color 0.2s, -fx-effect 0.2s;
+}
+
+.drop-zone:hover {
+    -fx-border-color: #d0d0d0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+}
+
+.drop-zone-active {
+    -fx-background-color: rgba(230, 240, 255, 0.7);
+    -fx-border-color: -fx-accent-blue;
+    -fx-effect: dropshadow(gaussian, rgba(30,144,255,0.2), 10, 0, 0, 2);
+}
+
+.drop-zone-label {
+    -fx-text-fill: -fx-mid-gray;
+    -fx-font-style: italic;
+}
+
+/* Outfit Details Pane */
+.outfit-details-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #eeeeee;
+    -fx-border-width: 1px;
+    -fx-padding: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);
+}
+
+.outfit-preview {
+    -fx-padding: 10px;
+    -fx-background-color: white;
+    -fx-border-color: #f0f0f0;
+    -fx-border-radius: 5px;
+}
+
+.style-rating {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 0;
+}
+
+.ai-suggestions {
+    -fx-padding: 10px;
+    -fx-background-color: #f9f9f9;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #eeeeee;
+}
+
+.suggestion-placeholder {
+    -fx-text-fill: -fx-mid-gray;
+    -fx-font-style: italic;
+    -fx-padding: 10px 0;
+}
+
+.ai-button {
+    -fx-background-color: -fx-accent-blue;
+    -fx-text-fill: white;
+    -fx-background-radius: 20px;
+    -fx-padding: 8px 15px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-transition: -fx-background-color 0.2s, -fx-scale-x 0.15s, -fx-scale-y 0.15s;
+}
+
+.ai-button:hover {
+    -fx-background-color: derive(-fx-accent-blue, -10%);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.ai-button:pressed {
+    -fx-background-color: derive(-fx-accent-blue, -20%);
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* AI Suggestion Item */
+.ai-suggestion-item {
+    -fx-padding: 8px;
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #eeeeee;
+    -fx-cursor: hand;
+    -fx-transition: -fx-background-color 0.2s, -fx-border-color 0.2s;
+}
+
+.ai-suggestion-item:hover {
+    -fx-background-color: #f0f8ff;
+    -fx-border-color: -fx-accent-blue;
+}
+
+.ai-suggestion-item-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.ai-suggestion-item-description {
+    -fx-font-size: 11px;
+    -fx-text-fill: -fx-mid-gray;
+}
+
+.ai-suggestion-item-rating {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-accent-blue;
+}
+
+/* Outfit Detail View Styles */
+.outfit-detail-container {
+    -fx-background-color: -fx-background;
+    -fx-padding: 20px;
+}
+
+.outfit-info-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-mid-gray;
+    -fx-padding: 5px 0;
+}
+
+.outfit-description {
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-background-color: #f9f9f9;
+    -fx-background-radius: 5px;
+    -fx-border-color: #eeeeee;
+    -fx-border-radius: 5px;
+}
+
+.outfit-items-pane {
+    -fx-padding: 15px;
+    -fx-alignment: center;
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-border-color: #eeeeee;
+    -fx-border-radius: 5px;
+    -fx-min-height: 300px;
+}
+
+/* Dialog Styles for consistent UI in light and dark modes */
+.dialog-pane, .custom-alert .dialog-pane {
+    -fx-background-color: -fx-background;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 15, 0, 0, 5);
+}
+
+.dialog-pane .header-panel, .custom-alert .dialog-pane .header-panel {
+    -fx-background-color: -fx-primary-light;
+    -fx-padding: 16px;
+    -fx-background-radius: 6px 6px 0 0;
+}
+
+.dialog-pane .header-panel .label, .custom-alert .dialog-pane .header-panel .label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-light-gray;
+}
+
+.dialog-pane .content.label, .custom-alert .dialog-pane .content.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-primary-dark;
+    -fx-padding: 16px 0;
+    -fx-wrap-text: true;
+}
+
+.dialog-pane .button-bar .container, .custom-alert .dialog-pane .button-bar .container {
+    -fx-background-color: transparent;
+    -fx-padding: 10px 0 0 0;
+}
+
+.dialog-pane .button-bar .button, .custom-alert .dialog-pane .button-bar .button {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-accent, 10%), -fx-accent);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-min-width: 100px;
+}
+
+.dialog-pane .button-bar .button:hover, .custom-alert .dialog-pane .button-bar .button:hover {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-accent, 20%), derive(-fx-accent, 10%));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 8, 0, 0, 2);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.dialog-pane .button-bar .button:pressed, .custom-alert .dialog-pane .button-bar .button:pressed {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-accent, -5%), derive(-fx-accent, 5%));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 0, 0, 1);
+}
+
+/* Apply different styles for different alert types */
+.custom-alert.confirmation .dialog-pane .header-panel {
+    -fx-background-color: #4c6ef5;
+}
+
+.custom-alert.information .dialog-pane .header-panel {
+    -fx-background-color: #1098ad;
+}
+
+.custom-alert.warning .dialog-pane .header-panel {
+    -fx-background-color: #f59f00;
+}
+
+.custom-alert.error .dialog-pane .header-panel {
+    -fx-background-color: #e03131;
+}
+
+/* Menu bar styling - simplified and consistent */
+.menu-bar {
+    -fx-background-color: #f5f5f5;
+}
+
+.menu-bar .menu {
+    -fx-background-color: transparent;
+}
+
+.menu-bar .menu .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.menu-bar .menu-button {
+    -fx-background-color: transparent;
+}
+
+.menu-bar .menu-button .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.menu-bar .menu-button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}
+
+.menu-bar .menu-button:showing {
+    -fx-background-color: rgba(0, 0, 0, 0.15);
+}
+
+.menu-bar .context-menu {
+    -fx-background-color: white;
+    -fx-border-color: #dddddd;
+}
+
+.menu-item {
+    -fx-background-color: white;
+}
+
+.menu-item .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.menu-item:focused, .menu-item:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Light mode class - counterpart to dark-mode for theme switching */
+.root:not(.dark-mode) {
+    -fx-text-fill: -fx-text-primary;
+}
+
+/* Ensure proper styling of menu buttons in light mode */
+.root:not(.dark-mode) .menu-bar .menu-button .label {
+    -fx-text-fill: -fx-text-primary !important;
+}
+
+/* Fix for MenuBarButtonStyle error in light mode */
+/* Fix for MenuBarButton style binding error */
+.menu-bar .menu-button, .MenuBarButtonStyle {
+    -fx-background-color: transparent !important;
+    -fx-text-fill: -fx-text-primary !important;
+}
+
+.unban-button:disabled {
+    -fx-opacity: 0.5;
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: #a0a0a0;
+    -fx-cursor: not-allowed;
+}
