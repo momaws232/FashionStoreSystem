@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.fashionstoreclothing.AdminController"
+            styleClass="root"
+            prefHeight="600.0" prefWidth="800.0">
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Admin Dashboard" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                <Region HBox.hgrow="ALWAYS"/> <!-- Spacer -->
+                <Label fx:id="dateTimeLabel" text="Current Date and Time: "/>
+                <Button text="Return to Main" onAction="#handleReturnToMain"/>
+                <Button text="Logout" onAction="#handleLogout"/>
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Filter:" />
+                <TextField fx:id="filterField" promptText="Filter login history..." HBox.hgrow="ALWAYS"/>
+                <Button text="Clear Filter" onAction="#handleClearFilter"/>
+                <Button text="Refresh Data" onAction="#handleRefreshData"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.4" orientation="VERTICAL">
+            <VBox spacing="5">
+                <padding>
+                    <Insets top="5" right="5" bottom="5" left="5"/>
+                </padding>
+                <Label text="Active Users" style="-fx-font-weight: bold;"/>
+                <TableView fx:id="activeUsersTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="activeUsernameColumn" text="Username" prefWidth="150"/>
+                        <TableColumn fx:id="activeLoginTimeColumn" text="Login Time" prefWidth="150"/>
+                        <TableColumn fx:id="activeDurationColumn" text="Duration" prefWidth="100"/>
+                        <TableColumn fx:id="activeIpAddressColumn" text="IP Address" prefWidth="150"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <VBox spacing="5">
+                <padding>
+                    <Insets top="5" right="5" bottom="5" left="5"/>
+                </padding>
+                <Label text="Login History" style="-fx-font-weight: bold;"/>
+                <TableView fx:id="loginHistoryTable">
+                    <columns>
+                        <TableColumn fx:id="usernameColumn" text="Username" prefWidth="100"/>
+                        <TableColumn fx:id="loginTimeColumn" text="Login Time" prefWidth="150"/>
+                        <TableColumn fx:id="logoutTimeColumn" text="Logout Time" prefWidth="150"/>
+                        <TableColumn fx:id="ipAddressColumn" text="IP Address" prefWidth="100"/>
+                        <TableColumn fx:id="durationColumn" text="Duration" prefWidth="100"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </SplitPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label fx:id="statusLabel" text="Ready"/>
+        </HBox>
+    </bottom>
+</BorderPane>

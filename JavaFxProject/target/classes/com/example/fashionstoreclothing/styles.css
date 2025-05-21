@@ -1,0 +1,317 @@
+/* Base styling for the entire application */
+.root {
+    -fx-background-color: #121212;
+    -fx-font-family: "Calibri", sans-serif;
+    -fx-text-fill: #f5f5f5;
+}
+
+/* Typography styles */
+.label {
+    -fx-text-fill: #e0e0e0;
+}
+
+.title-label {
+    -fx-font-family: "Brush Script MT", cursive;
+    -fx-font-size: 36px;
+    -fx-text-fill: #f8f8f8;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 4, 0, 0, 1);
+}
+
+.subtitle-label {
+    -fx-font-family: "Brush Script MT", cursive;
+    -fx-font-size: 22px;
+    -fx-text-fill: #e0e0e0;
+}
+
+.header-label {
+    -fx-font-family: "Segoe Script", cursive;
+    -fx-font-size: 18px;
+    -fx-text-fill: #f0f0f0;
+}
+
+.status-label {
+    -fx-font-style: italic;
+    -fx-text-fill: #b0b0b0;
+}
+
+/* Text fields and inputs */
+.text-field, .password-field, .text-area, .combo-box {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: #f0f0f0;
+    -fx-border-color: #444444;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-padding: 8px;
+}
+
+.text-field:focused, .password-field:focused, .text-area:focused, .combo-box:focused {
+    -fx-border-color: #808080;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.2), 5, 0, 0, 0);
+}
+
+/* Buttons styling */
+.button {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #f0f0f0;
+    -fx-border-color: #444444;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #2e2e2e;
+    -fx-border-color: #666666;
+}
+
+.button:pressed {
+    -fx-background-color: #3e3e3e;
+}
+
+.primary-button {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #555555;
+}
+
+.primary-button:hover {
+    -fx-background-color: #4a4a4a;
+    -fx-border-color: #777777;
+}
+
+/* TableView styling */
+.table-view {
+    -fx-background-color: #1a1a1a;
+    -fx-border-color: #333333;
+    -fx-table-cell-border-color: #333333;
+}
+
+.table-view .column-header {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-weight: bold;
+}
+
+.table-view .column-header-background .filler {
+    -fx-background-color: #2a2a2a;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #e0e0e0;
+    -fx-border-color: #333333;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #222222;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #444444;
+    -fx-text-fill: white;
+}
+
+/* Panel styling */
+.panel {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #333333;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 0);
+}
+
+/* Menu styling */
+.menu-bar {
+    -fx-background-color: #1a1a1a;
+    -fx-border-color: #333333;
+}
+
+.menu .label {
+    -fx-text-fill: #e0e0e0;
+}
+
+.menu-item {
+    -fx-background-color: #1e1e1e;
+}
+
+.menu-item:hover {
+    -fx-background-color: #333333;
+}
+
+/* Alerts and dialog boxes */
+.dialog-pane {
+    -fx-background-color: #1a1a1a;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #2a2a2a;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: #e0e0e0;
+}
+
+/* Specialized classes for inventory items */
+.low-stock {
+    -fx-text-fill: #ff8a80;
+}
+
+.high-value {
+    -fx-text-fill: #a5d6a7;
+}
+
+/* Brand styling */
+.brand-name {
+    -fx-font-family: "Brush Script MT", cursive;
+    -fx-font-size: 42px;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.2), 4, 0, 0, 1);
+}
+
+/* Login/register section */
+.auth-panel {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #333333;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+    -fx-padding: 20px;
+}
+.table-view .table-cell {
+    -fx-text-fill: #ffffff; /* Set default text color to white */
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff; /* Set header text color to white */
+}
+/* Animation keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+    0% { transform: translateX(-20px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+    0% { transform: translateX(20px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+@keyframes glow {
+    0% { -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.1), 0, 0, 0, 0); }
+    50% { -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.3), 12, 0, 0, 0); }
+    100% { -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.1), 0, 0, 0, 0); }
+}
+
+/* Apply animations to elements */
+.root {
+    -fx-background-color: #121212;
+    -fx-font-family: "Calibri", sans-serif;
+    -fx-text-fill: #f5f5f5;
+    -fx-animation: fadeIn 0.5s ease-in;
+}
+
+.title-label {
+    -fx-animation: slideInFromLeft 0.7s ease-out;
+}
+
+.subtitle-label {
+    -fx-animation: slideInFromRight 0.6s ease-out;
+}
+
+/* Button animations */
+.button {
+    -fx-transition: background-color 0.3s, border-color 0.3s, -fx-effect 0.3s;
+}
+
+.button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.15), 8, 0, 0, 0);
+    -fx-transition: background-color 0.2s, -fx-effect 0.2s;
+}
+
+.primary-button:hover {
+    -fx-animation: pulse 1s infinite;
+}
+
+/* Text field animations */
+.text-field, .password-field, .text-area, .combo-box {
+    -fx-transition: -fx-border-color 0.3s, -fx-effect 0.3s;
+}
+
+.text-field:focused, .password-field:focused, .text-area:focused, .combo-box:focused {
+    -fx-animation: glow 2s infinite;
+}
+
+/* TableView animations */
+.table-view {
+    -fx-animation: fadeIn 0.8s;
+}
+
+.table-view .table-row-cell {
+    -fx-transition: -fx-background-color 0.2s;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #2a2a2a;
+    -fx-transition: -fx-background-color 0.1s;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-animation: pulse 0.5s ease-out;
+}
+
+/* Panel animations */
+.panel {
+    -fx-animation: fadeIn 0.7s ease-out;
+    -fx-transition: -fx-effect 0.3s;
+}
+
+.panel:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
+    -fx-transition: -fx-effect 0.2s;
+}
+
+/* Menu animations */
+.menu-bar {
+    -fx-animation: slideInFromLeft 0.5s;
+}
+
+.menu:hover {
+    -fx-animation: pulse 1s ease-in-out;
+}
+
+.menu-item {
+    -fx-transition: -fx-background-color 0.2s;
+}
+
+/* Login panel animations */
+.auth-panel {
+    -fx-animation: fadeIn 1s;
+    -fx-transition: -fx-effect 0.3s;
+}
+
+.auth-panel:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 12, 0, 0, 0);
+    -fx-transition: -fx-effect 0.3s;
+}
+
+/* Status message animations */
+.status-label {
+    -fx-animation: fadeIn 0.5s;
+}
+
+
+/* Brand name animation */
+.brand-name {
+    -fx-animation: glow 3s infinite;
+}

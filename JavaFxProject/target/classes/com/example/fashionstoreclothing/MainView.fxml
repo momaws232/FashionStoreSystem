@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.fashionstoreclothing.MainController"
+            styleClass="root"
+            prefHeight="700.0" prefWidth="1000.0">
+    <top>
+        <VBox spacing="5">
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="Save Inventory" onAction="#handleSaveInventory"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Logout" onAction="#handleLogout"/>
+                    <MenuItem text="Exit" onAction="#handleExit"/>
+                </Menu>
+                <Menu text="Items">
+                    <MenuItem text="Add New Item" onAction="#handleAddItem"/>
+                    <MenuItem text="Edit Selected Item" onAction="#handleEditItem"/>
+                    <MenuItem text="Delete Selected Item" onAction="#handleDeleteItem"/>
+                </Menu>
+                <Menu text="View">
+                    <MenuItem text="Show All Items" onAction="#handleShowAllItems"/>
+                    <MenuItem text="Show Low Stock Items" onAction="#handleShowLowStock"/>
+                </Menu>
+                <Menu text="Admin" fx:id="adminMenu">
+                <MenuItem text="Admin Dashboard" onAction="#handleOpenAdminPanel"/>
+                </Menu>
+            </MenuBar>
+
+            <HBox alignment="CENTER_LEFT" spacing="20" styleClass="panel">
+                <padding>
+                    <Insets top="15" right="20" bottom="15" left="20"/>
+                </padding>
+                <Label text="Elegant Attire" styleClass="title-label"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="dateTimeLabel" styleClass="status-label"/>
+                <Label fx:id="userLoginLabel" styleClass="status-label"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Search:" styleClass="header-label"/>
+                <TextField fx:id="searchField" promptText="Enter search term" HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <TableView fx:id="itemTableView" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="nameColumn" text="Name" prefWidth="150"/>
+                    <TableColumn fx:id="categoryColumn" text="Category" prefWidth="120"/>
+                    <TableColumn fx:id="sizeColumn" text="Size" prefWidth="80"/>
+                    <TableColumn fx:id="colorColumn" text="Color" prefWidth="100"/>
+                    <TableColumn fx:id="priceColumn" text="Price" prefWidth="100"/>
+                    <TableColumn fx:id="quantityColumn" text="Quantity" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <bottom>
+        <VBox>
+            <HBox styleClass="panel" alignment="CENTER_LEFT" spacing="15">
+                <padding>
+                    <Insets top="10" right="20" bottom="10" left="20"/>
+                </padding>
+
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <Button text="Add Item" onAction="#handleAddItem" styleClass="primary-button"/>
+                    <Button text="Edit Item" onAction="#handleEditItem" styleClass="button"/>
+                    <Button text="Delete Item" onAction="#handleDeleteItem" styleClass="button"/>
+                </HBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Label fx:id="totalValueLabel" styleClass="header-label"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="5" right="20" bottom="10" left="20"/>
+                </padding>
+                <Label fx:id="statusLabel" styleClass="status-label"/>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>
